@@ -122,9 +122,9 @@ export const app: AppConfig = {
 		},
 		families: [
 			{
-				name: 'PPNeueMontreal-Book',
+				name: 'PPNeueMontreal-Regular',
 				provider: 'local',
-				src: '/fonts/PPNeueMontreal-Book.woff2',
+				src: '/fonts/PPNeueMontreal-Regular.woff2',
 			},
 			{
 				name: 'PPNeueMontreal-Medium',
@@ -132,9 +132,9 @@ export const app: AppConfig = {
 				src: '/fonts/PPNeueMontreal-Medium.woff2',
 			},
 			{
-				name: 'PPNeueMachina-Regular',
+				name: 'PPNeueMachina-InktrapRegular',
 				provider: 'local',
-				src: '/fonts/PPNeueMachina-Regular.woff2',
+				src: '/fonts/PPNeueMachina-InktrapRegular.woff2',
 			},
 		],
 	},

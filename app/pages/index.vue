@@ -1,7 +1,9 @@
 <template>
 	<storyblok-wrapper url="home">
 		<template #default="{ refreshKey }">
-			<main :key="refreshKey" class="page-index layout-block"></main>
+			<main :key="refreshKey" class="page-index layout-block">
+				<home-hero />
+			</main>
 		</template>
 	</storyblok-wrapper>
 </template>
