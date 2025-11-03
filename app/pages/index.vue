@@ -8,8 +8,4 @@
 
 <script setup lang="ts"></script>
 
-<style lang="scss" scoped>
-.page-index {
-	padding: var(--spacer-64) 0;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -57,8 +57,8 @@ interface AppConfig {
 const colors: any = generateShades({
 	black: '#080808',
 	'off-white': '#F8F6EF',
-	white: '#fffef4',
-	yellow: '##FFD417',
+	white: '#fffdfd',
+	yellow: '#FFD417',
 	teal: '#7CE7CF',
 });
 
@@ -84,13 +84,13 @@ const breakpoints: any = {
 
 // Define grid system with columns, gap, and margin settings
 const grid: any = {
-	columns: [4, 16],
+	columns: [4, 12],
 	gap: [8, 8],
-	margin: [16, 48],
+	margin: [32, 32],
 };
 
 // Define global spacers
-const spacers: any = [4, 8, 16, 32, 64];
+const spacers: any = [2, 4, 8, 16, 24, 32, 48, 64, 96, 128];
 
 // Application-level configuration (SSR, prefetching, etc.)
 export const app: AppConfig = {
@@ -118,7 +118,7 @@ export const app: AppConfig = {
 	fonts: {
 		devtools: false,
 		defaults: {
-			weights: [300, 400, 500, 700, 900],
+			weights: [400, 500],
 		},
 		families: [
 			{
@@ -134,7 +134,7 @@ export const app: AppConfig = {
 			{
 				name: 'PPNeueMachina-Regular',
 				provider: 'local',
-				src: '/fonts/PPNeueMachina-Regular.woff2.woff2',
+				src: '/fonts/PPNeueMachina-Regular.woff2',
 			},
 		],
 	},

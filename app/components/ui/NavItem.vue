@@ -1,0 +1,80 @@
+<template>
+	<button :aria-label="label" class="ui-nav-item">
+		<common-a-link :href="resolveLink(href)" :aria-label="label">
+			<span>{{ label }}</span>
+			<span>{{ label }}</span>
+		</common-a-link>
+	</button>
+</template>
+
+<script setup lang="ts">
+import { resolveLink } from '~/libs/storyblok/utils';
+
+defineProps({
+	href: {
+		type: String,
+		required: true,
+	},
+	label: {
+		type: String,
+		required: true,
+	},
+});
+</script>
+
+<style lang="scss" scoped>
+.ui-nav-item {
+	user-select: none;
+	padding: var(--spacer-4) var(--spacer-8);
+
+	&:deep(.a-div) {
+		position: relative;
+		display: block;
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			@include fill(absolute);
+			width: 100%;
+			height: 100%;
+			background-color: var(--black);
+			z-index: 1;
+			transform: translateY(100%);
+			transition: transform var(--duration-fast) var(--ease-in-out-circ);
+		}
+	}
+
+	span {
+		position: relative;
+		display: block;
+		transition: transform var(--duration-medium) var(--ease-in-out-circ);
+
+		&:nth-child(2) {
+			position: absolute;
+			left: 0;
+			top: 0;
+			transform: translateY(100%);
+		}
+	}
+
+	@include desktop {
+		&:hover {
+			&:deep(.a-div) {
+				&::before {
+					transform: translateY(-100%);
+				}
+			}
+
+			span {
+				&:nth-child(1) {
+					transform: translateY(-100%);
+				}
+
+				&:nth-child(2) {
+					transform: translateY(0);
+				}
+			}
+		}
+	}
+}
+</style>

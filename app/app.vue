@@ -15,13 +15,13 @@
 			$store.theme
 		]"
 	>
-		<client-only>
-			<lazy-three-root v-if="app.three.enabled" :options="app.three.options" />
-		</client-only>
-
 		<nuxt-layout>
 			<nuxt-page />
 		</nuxt-layout>
+
+		<client-only>
+			<ui-frame />
+		</client-only>
 	</div>
 </template>
 
@@ -31,9 +31,6 @@ import { EVENTS } from './libs/constants/event';
 import useAppStore from './store/useAppStore';
 
 const $store = useAppStore();
-const {
-	public: { app },
-} = useRuntimeConfig();
 const { $emit } = useNuxtApp();
 const { width, height } = useWindowSize();
 const { isLoading } = useLoadingIndicator();
@@ -45,6 +42,7 @@ const scope = effectScope();
 const enabled = computed(() => $store.isEnabled);
 
 const preloadFonts = async () => {
+	await nextTick();
 	fontsLoaded.value = true;
 };
 

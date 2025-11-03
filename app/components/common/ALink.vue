@@ -39,6 +39,7 @@
 	</a>
 	<nuxt-link
 		v-else
+		:class="['a-div']"
 		:to="href"
 		:aria-label="ariaLabel"
 		:replace="replaceState"
