@@ -2,7 +2,7 @@
 	<header class="site-header">
 		<div class="layout-block">
 			<ui-logo />
-			<ul role="navigation" class="site-header__nav">
+			<ul v-show="isDesktop" role="navigation" class="site-header__nav">
 				<li role="navigation-item">
 					<ui-nav-item href="/enterprise" label="Enterprise" />
 				</li>
@@ -27,12 +27,14 @@
 
 <script setup lang="ts">
 import { BUTTON_TYPES } from '~/libs/constants/ui';
+const { isDesktop } = useBreakpoints();
 </script>
 
 <style lang="scss" scoped>
 .site-header {
 	position: fixed;
 	width: 100%;
+	padding: var(--spacer-32) 0 var(--spacer-16) 0;
 
 	@include desktop {
 		padding: var(--spacer-32) 0 var(--spacer-16) 0;

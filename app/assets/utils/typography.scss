@@ -70,9 +70,20 @@ $max-vw-default: 1920;
     letter-spacing: $spacing;
 }
 
+@mixin h1 {
+  @include type('PPNeueMontreal-Medium', 100px, 80px, 140px, 500, 100%);
+}
 
 h1,.h1 {
     @include type('PPNeueMontreal-Medium', 100px, 80px, 140px, 500, 100%);
+}
+
+h2,.h2 {
+  @include type('PPNeueMontreal-Medium', 60px, 40px, 80px, 500, 100%);
+}
+
+h3, .h3 {
+  @include type('PPNeueMontreal-Regular', 60px, 40px, 80px, 400, 100%);
 }
 
 button, .button,.cta {

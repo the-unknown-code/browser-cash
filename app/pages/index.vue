@@ -3,6 +3,7 @@
 		<template #default="{ refreshKey }">
 			<main :key="refreshKey" class="page-index layout-block">
 				<home-hero />
+				<home-actions />
 			</main>
 		</template>
 	</storyblok-wrapper>

@@ -1,7 +1,7 @@
 <template>
 	<section class="home-hero">
 		<hgroup>
-			<h1 class="h1">
+			<h1 class="h2">
 				<animation-block>
 					<span>Browser</span>
 					<img src="/images/smile.png" alt="Smiley" width="90" height="90" />
@@ -13,7 +13,7 @@
 				<animation-block :delay="0.2">
 					<span>of AI</span>
 					<img src="/images/stars.png" alt="Stars" width="90" height="90" />
-					<span>Cash</span>
+					<span>browser</span>
 				</animation-block>
 				<animation-block :delay="0.3">
 					<span>agents.</span>
@@ -38,16 +38,31 @@ import { BUTTON_TYPES } from '~/libs/constants/ui';
 	min-height: 100lvh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
+
+	@include desktop {
+		justify-content: center;
+	}
 
 	hgroup {
 		position: relative;
-		transform: translateX(calc(var(--spacer-16) * -1));
+		transform: translate(
+			calc(var(--spacer-16) * -1),
+			calc(var(--spacer-64) * 2)
+		);
+
+		@include desktop {
+			transform: translate(calc(var(--spacer-16) * -1), 0);
+		}
 
 		h1 {
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
+
+			@include desktop {
+				@include h1;
+			}
 
 			> * {
 				margin-top: -1px;
@@ -56,7 +71,11 @@ import { BUTTON_TYPES } from '~/libs/constants/ui';
 
 		img {
 			width: auto;
-			height: 80px;
+			height: 30px;
+
+			@include desktop {
+				height: 80px;
+			}
 		}
 	}
 }

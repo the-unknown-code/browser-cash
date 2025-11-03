@@ -53,6 +53,7 @@ tryOnMounted(() => {
 	border: 1px solid transparent;
 	border-left: none;
 	overflow: hidden;
+	padding-left: var(--spacer-4);
 
 	&__content {
 		position: relative;

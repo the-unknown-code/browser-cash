@@ -111,4 +111,17 @@
 </template>
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.ui-logo {
+	position: relative;
+
+	svg {
+		width: auto;
+		height: 20px;
+
+		@include desktop {
+			height: 32px;
+		}
+	}
+}
+</style>
