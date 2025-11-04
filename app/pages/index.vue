@@ -4,6 +4,8 @@
 			<main :key="refreshKey" class="page-index layout-block">
 				<home-hero />
 				<home-actions />
+				<home-tasks />
+				<home-airdrop />
 			</main>
 		</template>
 	</storyblok-wrapper>

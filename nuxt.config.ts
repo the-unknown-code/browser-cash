@@ -4,6 +4,7 @@ import { toKebabCase } from './app/libs/common/utils';
 
 const modules = [
 	'@nuxt/eslint',
+	'@nuxt/image',
 	'@pinia/nuxt',
 	'@vueuse/nuxt',
 	'@nuxt/fonts',

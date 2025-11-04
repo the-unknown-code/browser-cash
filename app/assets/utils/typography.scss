@@ -78,17 +78,34 @@ h1,.h1 {
     @include type('PPNeueMontreal-Medium', 100px, 80px, 140px, 500, 100%);
 }
 
+@mixin h2 {
+  @include type('PPNeueMontreal-Medium', 60px, 40px, 80px, 500, 100%);
+}
+
 h2,.h2 {
   @include type('PPNeueMontreal-Medium', 60px, 40px, 80px, 500, 100%);
+}
+
+@mixin h3 {
+  @include type('PPNeueMontreal-Regular', 60px, 40px, 80px, 400, 100%);
 }
 
 h3, .h3 {
   @include type('PPNeueMontreal-Regular', 60px, 40px, 80px, 400, 100%);
 }
 
+@mixin p {
+  @include type('PPNeueMontreal-Regular', 20px, 16px, 24px, 400, 100%);
+}
+
+p, .p {
+  @include type('PPNeueMontreal-Regular', 20px, 16px, 24px, 400, 150%);
+}
+
+
 button, .button,.cta {
   text-transform: uppercase;
   cursor: pointer;
-  @include type('PPNeueMachina-InktrapRegular', 13px, 13px, 13px, 400, 100%, 2%);
+  @include type('PPNeueMachina-InktrapRegular', 12px, 12px, 12px, 400, 100%, 2%);
 
 }

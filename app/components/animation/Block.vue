@@ -29,7 +29,7 @@ const initialize = () => {
 		ease: GSAPEase.SLOW_IN_OUT,
 		scrollTrigger: {
 			trigger: $content.value,
-			start: 'top 80%',
+			start: 'top 95%',
 		},
 		onStart: () => {
 			gsap.to($block.value, {

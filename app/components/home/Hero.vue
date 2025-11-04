@@ -1,10 +1,17 @@
 <template>
 	<section class="home-hero">
 		<hgroup>
-			<h1 class="h2">
+			<h1 role="heading" aria-level="1" class="h2">
 				<animation-block>
 					<span>Browser</span>
-					<img src="/images/smile.png" alt="Smiley" width="90" height="90" />
+					<nuxt-img
+						src="/images/smile.png"
+						alt="Smiley"
+						loading="lazy"
+						quality="80"
+						format="webp"
+						class="icon"
+					/>
 					<span>Cash</span>
 				</animation-block>
 				<animation-block :delay="0.1">
@@ -12,7 +19,14 @@
 				</animation-block>
 				<animation-block :delay="0.2">
 					<span>of AI</span>
-					<img src="/images/stars.png" alt="Stars" width="90" height="90" />
+					<nuxt-img
+						src="/images/stars.png"
+						alt="Stars"
+						loading="lazy"
+						quality="80"
+						format="webp"
+						class="icon"
+					/>
 					<span>browser</span>
 				</animation-block>
 				<animation-block :delay="0.3">
