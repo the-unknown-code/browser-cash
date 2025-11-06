@@ -13,9 +13,11 @@
 	padding: var(--spacer-16);
 	pointer-events: none;
 	z-index: 9999;
+	border: var(--spacer-16) solid var(--white);
+	border-collapse: collapse;
 
 	> div {
-		@include fill(relative);
+		@include fill(absolute);
 		width: 100%;
 		height: 100%;
 		border: 1px solid var(--black);

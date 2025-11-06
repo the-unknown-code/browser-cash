@@ -1,21 +1,76 @@
 <template>
 	<section class="home-airdrop">
 		<hgroup>
-			<h1 class="h2">
+			<div class="title h2">
 				<animation-block>
 					<span>Join the</span>
-					<img src="/images/energy.png" alt="Energy" width="90" height="90" />
+					<nuxt-img
+						src="/images/energy.png"
+						alt="Energy"
+						loading="lazy"
+						quality="80"
+						format="webp"
+						class="icon"
+					/>
 					<span>Airdrop</span>
 				</animation-block>
 				<animation-block :delay="0.1">
 					<span>revolution</span>
 				</animation-block>
-			</h1>
+			</div>
 		</hgroup>
+		<div class="home-airdrop__slider">
+			<utils-slider :options="{ infinite: true, snap: false, lerpFactor: 0.1 }">
+				<div v-for="(card, index) in CARDS" :key="index" class="slide">
+					<div data-parallax>
+						<ui-card :block="card" />
+					</div>
+				</div>
+			</utils-slider>
+		</div>
 	</section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const CARDS = [
+	{
+		description: 'Earn points for token airdrop and community rewards',
+	},
+	{
+		description: 'Power real AI agents, not data collection',
+	},
+	{
+		description: 'Complete privacy protection. Your data system stays yours',
+	},
+	{
+		description: 'Zero impact browsing performance guaranteed',
+	},
+	{
+		description: 'Join global automation network. Be part of the AI workforce',
+	},
+	{
+		description: 'Complete privacy protection. Your data system stays yours',
+	},
+	{
+		description: 'Earn points for token airdrop and community rewards',
+	},
+	{
+		description: 'Power real AI agents, not data collection',
+	},
+	{
+		description: 'Complete privacy protection. Your data system stays yours',
+	},
+	{
+		description: 'Zero impact browsing performance guaranteed',
+	},
+	{
+		description: 'Join global automation network. Be part of the AI workforce',
+	},
+	{
+		description: 'Complete privacy protection. Your data system stays yours',
+	},
+];
+</script>
 
 <style lang="scss" scoped>
 .home-airdrop {
@@ -30,16 +85,13 @@
 
 	hgroup {
 		position: relative;
-		transform: translate(
-			calc(var(--spacer-16) * -1),
-			calc(var(--spacer-64) * 2)
-		);
+		transform: translate(calc(var(--spacer-16) * -1), 0);
 
 		@include desktop {
-			transform: translate(calc(var(--spacer-16) * -1), 0);
+			// transform: translate(calc(var(--spacer-16) * -1), 0);
 		}
 
-		h1 {
+		.title {
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
@@ -59,6 +111,33 @@
 
 			@include desktop {
 				height: 70px;
+			}
+		}
+	}
+
+	&__slider {
+		position: relative;
+
+		width: 100%;
+		margin-top: calc(var(--spacer-64) * 2);
+
+		.slide {
+			position: relative;
+			display: block;
+			width: clamp(300px, 33%, 400px);
+			padding: 0 var(--spacer-16);
+
+			&:nth-child(2n) {
+				top: calc(var(--spacer-32) * -1);
+			}
+
+			&:nth-child(3n) {
+				top: calc(var(--spacer-64) * -1);
+			}
+
+			> div {
+				position: relative;
+				display: block;
 			}
 		}
 	}

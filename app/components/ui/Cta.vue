@@ -45,6 +45,7 @@ defineProps({
 <style lang="scss" scoped>
 .ui-cta {
 	position: relative;
+	width: max-content;
 	user-select: none;
 	padding: var(--spacer-16) var(--spacer-16);
 	border: 1px solid var(--black);
@@ -64,6 +65,10 @@ defineProps({
 
 	&--primary {
 		background-color: var(--yellow);
+	}
+
+	&--inverted {
+		background-color: var(--teal);
 	}
 
 	&--secondary {

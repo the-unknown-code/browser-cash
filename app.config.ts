@@ -78,7 +78,7 @@ const themes: any = {
 
 // Define responsive design breakpoints for layouts
 const breakpoints: any = {
-	mobile: 800,
+	mobile: 960,
 	wide: 1720,
 };
 

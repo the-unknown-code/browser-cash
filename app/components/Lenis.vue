@@ -57,7 +57,7 @@ const initLenis = () => {
 	});
 
 	lenis.value.scrollTo(0, { immediate: true });
-	lenis.value.stop();
+	// lenis.value.stop();
 
 	removeRaf.value = Tempus.add((time: number) => {
 		lenis.value?.raf(time);

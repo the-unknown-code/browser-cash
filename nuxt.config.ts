@@ -39,7 +39,7 @@ export const scssFunctions = {
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
 
-	devtools: { enabled: true },
+	devtools: { enabled: false },
 
 	modules,
 
@@ -57,7 +57,7 @@ export default defineNuxtConfig({
 	},
 
 	$development: {
-		devtools: { enabled: true },
+		devtools: { enabled: false },
 		app: {
 			rootId: `${toKebabCase(app.title)}-development`,
 		},

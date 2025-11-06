@@ -35,6 +35,7 @@ const { isDesktop } = useBreakpoints();
 	position: fixed;
 	width: 100%;
 	padding: var(--spacer-32) 0 var(--spacer-16) 0;
+	z-index: 100;
 
 	@include desktop {
 		padding: var(--spacer-32) 0 var(--spacer-16) 0;
@@ -47,6 +48,7 @@ const { isDesktop } = useBreakpoints();
 	}
 
 	ul {
+		position: relative;
 		display: flex;
 		align-items: center;
 		gap: var(--spacer-16);
