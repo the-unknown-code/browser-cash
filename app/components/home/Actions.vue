@@ -1,10 +1,13 @@
 <template>
 	<section class="home-actions">
-		<ui-text-block :block="block" />
+		<div ref="$actions">
+			<ui-text-block :block="block" />
+		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
+import { EVENTS } from '~/libs/constants/event';
 import { BUTTON_TYPES } from '~/libs/constants/ui';
 
 const block = {
@@ -24,6 +27,32 @@ const block = {
 		},
 	],
 };
+
+const { $emit } = useNuxtApp();
+const $actions = ref<HTMLElement | null>(null);
+const { y } = useElementBounding($actions);
+const { height } = useWindowSize();
+const scope = effectScope();
+
+scope.run(async () => {
+	watch(y, () => {
+		if (y.value < height.value / 2 && y.value > 0) {
+			$emit(EVENTS.PLAY_RIVE_TRIGGER, {
+				identifier: 'main',
+				trigger: 'tr_03',
+			});
+		} else if (y.value > height.value / 2 && y.value < height.value) {
+			$emit(EVENTS.PLAY_RIVE_TRIGGER, {
+				identifier: 'main',
+				trigger: 'tr_01',
+			});
+		}
+	});
+});
+
+tryOnBeforeUnmount(() => {
+	scope.stop();
+});
 </script>
 
 <style lang="scss" scoped>

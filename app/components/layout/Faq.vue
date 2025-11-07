@@ -115,6 +115,8 @@ const faqBlock = [
 
 		@include desktop {
 			margin-top: 0;
+			justify-content: center;
+			height: 100%;
 		}
 
 		> * {

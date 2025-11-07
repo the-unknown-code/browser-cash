@@ -33,7 +33,7 @@
 			</svg>
 		</div>
 		<div ref="$container" class="answer">
-			<p ref="$answer">{{ block.answer }}</p>
+			<p ref="$answer" class="p-small">{{ block.answer }}</p>
 		</div>
 
 		<div
@@ -81,7 +81,7 @@ const { height } = useElementBounding($answer);
 scope.run(async () => {
 	watch(active, async () => {
 		gsap.to($container.value, {
-			marginTop: active.value ? 32 : 0,
+			marginTop: active.value ? 24 : 0,
 			height: active.value ? height.value : 0,
 			ease: GSAPEase.SLOW_IN_OUT,
 			duration: GSAPDuration.FAST,

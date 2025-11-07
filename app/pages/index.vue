@@ -2,6 +2,10 @@
 	<storyblok-wrapper url="home">
 		<template #default="{ refreshKey }">
 			<main :key="refreshKey" class="page-index layout-block">
+				<client-only>
+					<animation-home />
+				</client-only>
+
 				<home-hero />
 				<home-actions />
 				<home-tasks />

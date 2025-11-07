@@ -62,6 +62,7 @@ tryOnMounted(() => {
 		gap: var(--spacer-8);
 		user-select: none;
 		transform: translateY(100%);
+		background-color: var(--white);
 
 		&:deep(.ui-cta) {
 			border: none;

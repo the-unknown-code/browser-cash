@@ -1840,6 +1840,11 @@
   resolved "https://registry.yarnpkg.com/@rive-app/canvas-lite/-/canvas-lite-2.32.0.tgz#336cf8e9fdd33cee2bd1d5b8e9345b00d40011b4"
   integrity sha512-F35bDRwmjpGNzprWyLt8zc9YducAMh6L3q06Dzqg34B0O6AVKymAb1knGsBIn0wBaG8ufNZZWHkrC2a0rv+zuA==
 
+"@rive-app/canvas@^2.32.0":
+  version "2.32.0"
+  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-2.32.0.tgz#ccec3eacd766221f4874bc021cf84b492a399161"
+  integrity sha512-RZRZQRWItH7e0NVmHVhffkm02J/9CO/Qdq71Vu1TkExj312Oc22FpBVn8rBnyEeQak75bJy9m/ig84Crcr7qog==
+
 "@rolldown/pluginutils@1.0.0-beta.29":
   version "1.0.0-beta.29"
   resolved "https://registry.yarnpkg.com/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.29.tgz#f8fc9a8788757dccba0d3b7fee93183621773d4c"
