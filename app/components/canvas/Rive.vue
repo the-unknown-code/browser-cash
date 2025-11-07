@@ -10,7 +10,6 @@ import {
 	type StateMachineInput,
 	type RiveParameters,
 } from '@rive-app/canvas-lite';
-import { uniqueId } from 'lodash';
 import type { Handler } from 'mitt';
 import { EVENTS } from '~/libs/constants/event';
 
@@ -18,7 +17,7 @@ const props = defineProps({
 	identifier: {
 		type: String,
 		required: false,
-		default: uniqueId('rive'),
+		default: 'rive',
 	},
 	params: {
 		type: Object as PropType<RiveParameters>,
