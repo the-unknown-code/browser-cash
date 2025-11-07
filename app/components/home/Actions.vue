@@ -57,13 +57,18 @@ tryOnBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .home-actions {
-	min-height: 100lvh;
+	min-height: 150lvh;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 
 	@include desktop {
 		justify-content: center;
+	}
+
+	> div {
+		position: relative;
+		height: 100lvh;
 	}
 }
 </style>

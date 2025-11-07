@@ -92,13 +92,16 @@ const CARDS = [
 
 <style lang="scss" scoped>
 .home-airdrop {
-	min-height: 100lvh;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
+	padding: var(--spacer-32) 0;
+	min-height: 90lvh;
 
 	@include desktop {
-		// justify-content: center;
+		min-height: 100lvh;
+		justify-content: flex-start;
+		padding: var(--spacer-64) 0;
 	}
 
 	hgroup {

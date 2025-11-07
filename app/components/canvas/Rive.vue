@@ -30,6 +30,7 @@ const { $on, $off } = useNuxtApp();
 const $canvas = ref<HTMLCanvasElement | null>(null);
 let riveInstance: Rive | null = null;
 let inputs: StateMachineInput[] = [];
+const scope = effectScope();
 // let currentTrigger: string = '';
 
 const resizeRive = useDebounceFn(() => {
@@ -64,13 +65,25 @@ const onPlayRiveTrigger = ({
 	if (identifier !== props.identifier) return;
 
 	const input = inputs.find(input => input.name === trigger);
-	console.log(input?.name);
 	input?.fire();
 };
 
 const initializeListeners = () => {
 	$on(EVENTS.PLAY_RIVE_TRIGGER, onPlayRiveTrigger as Handler);
 };
+
+const visible = useElementVisibility($canvas);
+scope.run(async () => {
+	watch(
+		visible,
+		() => {
+			if (riveInstance) {
+				riveInstance[visible.value ? 'startRendering' : 'stopRendering']();
+			}
+		},
+		{ immediate: true }
+	);
+});
 
 tryOnMounted(async () => {
 	await nextTick();
@@ -91,6 +104,8 @@ defineExpose({
 <style lang="scss" scoped>
 .canvas-rive {
 	@include fill(absolute);
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	z-index: 0;

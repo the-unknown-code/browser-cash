@@ -4,7 +4,7 @@
 			<ui-text-block :block="block" />
 		</div>
 	</section>
-	<div class="home-tasks__spacer" />
+	<div ref="$spacer" class="home-tasks__spacer" />
 </template>
 
 <script setup lang="ts">
@@ -25,7 +25,9 @@ const block = {
 
 const { $emit } = useNuxtApp();
 const $tasks = ref<HTMLElement | null>(null);
+const $spacer = ref<HTMLElement | null>(null);
 const { y } = useElementBounding($tasks);
+const { y: ySpacer } = useElementBounding($spacer);
 const { height } = useWindowSize();
 const scope = effectScope();
 
@@ -41,6 +43,14 @@ scope.run(async () => {
 				identifier: 'main',
 				trigger: 'tr_03',
 			});
+		}
+	});
+
+	watch(ySpacer, () => {
+		if (ySpacer.value <= 0) {
+			$emit(EVENTS.SPACER_SCROLL, ySpacer.value);
+		} else {
+			$emit(EVENTS.SPACER_SCROLL, 0);
 		}
 	});
 });
