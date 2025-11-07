@@ -1,21 +1,17 @@
 <template>
-	<storyblok-wrapper url="home">
-		<template #default="{ refreshKey }">
-			<main :key="refreshKey" class="page-index layout-block">
-				<client-only>
-					<animation-home />
-				</client-only>
+	<main class="page-index layout-block">
+		<client-only>
+			<animation-home />
+		</client-only>
 
-				<home-hero />
-				<home-actions />
-				<home-tasks />
-				<home-airdrop />
-				<home-reward />
-				<home-companies />
-				<layout-faq />
-			</main>
-		</template>
-	</storyblok-wrapper>
+		<home-hero />
+		<home-actions />
+		<home-tasks />
+		<home-airdrop />
+		<home-reward />
+		<home-companies />
+		<layout-faq />
+	</main>
 </template>
 
 <script setup lang="ts"></script>
