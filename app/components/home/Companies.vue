@@ -1,5 +1,5 @@
 <template>
-	<section class="home-companies">
+	<section ref="$section" class="home-companies">
 		<div class="layout-grid">
 			<div>
 				<ui-text-block :block="block" />
@@ -29,6 +29,20 @@ const block = {
 		},
 	],
 };
+const $section = ref<HTMLElement | null>(null);
+const scope = effectScope();
+
+scope.run(async () => {
+	useLenis(({ velocity }: { velocity: number }) => {
+		if (!$section.value) return;
+		console.log(velocity / 100);
+		$section.value.style.setProperty('--velocity', (velocity / 100).toString());
+	});
+});
+
+tryOnBeforeUnmount(() => {
+	scope.stop();
+});
 </script>
 
 <style lang="scss" scoped>

@@ -39,6 +39,13 @@ defineProps({
 		border-radius: var(--spacer-24);
 		border: 1.5px solid var(--black);
 		z-index: -1;
+
+		@include desktop {
+			transform: translate(
+				0,
+				calc(var(--spacer-8) * 1 + var(--velocity) * 32px)
+			);
+		}
 	}
 
 	&:deep(.svg-mask) {
