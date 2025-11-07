@@ -2,16 +2,13 @@
 	<storyblok-wrapper url="home">
 		<template #default="{ refreshKey }">
 			<main :key="refreshKey" class="page-index layout-block">
-				<home-companies />
-				<layout-faq />
-				<!--
 				<home-hero />
 				<home-actions />
 				<home-tasks />
 				<home-airdrop />
 				<home-reward />
 				<home-companies />
-				-->
+				<layout-faq />
 			</main>
 		</template>
 	</storyblok-wrapper>

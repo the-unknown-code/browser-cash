@@ -35,6 +35,17 @@
 		<div ref="$container" class="answer">
 			<p ref="$answer">{{ block.answer }}</p>
 		</div>
+
+		<div
+			v-if="index === 0 || index === 3 || index === 4"
+			:class="`icon icon--${index}`"
+		>
+			<nuxt-img
+				:src="ICONS.find(icon => icon.index === index)?.src"
+				loading="lazy"
+				alt="FAQ Icon"
+			/>
+		</div>
 	</div>
 </template>
 
@@ -42,9 +53,19 @@
 import gsap from 'gsap/all';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
 
+const ICONS = [
+	{ index: 0, src: '/images/balloon-icon.svg' },
+	{ index: 3, src: '/images/v-hand.svg' },
+	{ index: 4, src: '/images/fan-glove.svg' },
+];
+
 defineProps({
 	block: {
 		type: Object,
+		required: true,
+	},
+	index: {
+		type: Number,
 		required: true,
 	},
 });
@@ -162,6 +183,48 @@ tryOnBeforeUnmount(() => {
 			circle {
 				fill: var(--yellow);
 			}
+		}
+	}
+
+	.icon {
+		position: absolute;
+		width: 60px;
+		aspect-ratio: 1;
+		pointer-events: none;
+
+		@include desktop {
+			width: 80px;
+		}
+
+		&--0 {
+			top: 0;
+			right: 20%;
+			transform: translate(0%, -50%);
+		}
+
+		&--3 {
+			top: 0;
+			right: 20%;
+			transform: translate(0%, -50%) rotate(-20deg);
+		}
+
+		&--4 {
+			left: 0;
+			bottom: 0;
+			width: 80px;
+			transform: translate(-60%, 10%) rotate(10deg);
+
+			@include desktop {
+				width: 100px;
+			}
+		}
+
+		img {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			object-position: center;
 		}
 	}
 }

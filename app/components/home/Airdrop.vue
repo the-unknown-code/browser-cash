@@ -35,39 +35,57 @@
 const CARDS = [
 	{
 		description: 'Earn points for token airdrop and community rewards',
+		rive: '/rive/card_flowers.riv',
 	},
 	{
 		description: 'Power real AI agents, not data collection',
+		rive: '/rive/card_brain.riv',
 	},
 	{
 		description: 'Complete privacy protection. Your data system stays yours',
+		rive: '/rive/card_lock.riv',
 	},
 	{
 		description: 'Zero impact browsing performance guaranteed',
+		rive: '/rive/card_timer.riv',
+		right: true,
 	},
 	{
 		description: 'Join global automation network. Be part of the AI workforce',
+		rive: '/rive/card_smiley.riv',
+		right: true,
 	},
 	{
 		description: 'Complete privacy protection. Your data system stays yours',
+		rive: '/rive/card_crown.riv',
+		right: true,
 	},
 	{
 		description: 'Earn points for token airdrop and community rewards',
+		rive: '/rive/card_flowers.riv',
 	},
 	{
 		description: 'Power real AI agents, not data collection',
+		rive: '/rive/card_brain.riv',
 	},
 	{
 		description: 'Complete privacy protection. Your data system stays yours',
+		rive: '/rive/card_lock.riv',
 	},
 	{
 		description: 'Zero impact browsing performance guaranteed',
+		rive: '/rive/card_timer.riv',
+		right: true,
 	},
 	{
 		description: 'Join global automation network. Be part of the AI workforce',
+		rive: '/rive/card_smiley.riv',
+		right: true,
 	},
 	{
 		description: 'Complete privacy protection. Your data system stays yours',
+		rive: '/rive/card_crown.riv',
+		right: true,
 	},
 ];
 </script>

@@ -16,6 +16,7 @@
 		"@nuxt/image": "1.11.0",
 		"@nuxtjs/robots": "^5.5.6",
 		"@nuxtjs/sitemap": "^7.4.7",
+		"@rive-app/canvas-lite": "^2.32.0",
 		"@storyblok/nuxt": "8.0.4",
 		"@storyblok/richtext": "^3.8.2",
 		"eslint": "^9.0.0",

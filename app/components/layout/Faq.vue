@@ -6,9 +6,10 @@
 			</div>
 			<div class="layout-faq__items">
 				<ui-faq-item
-					v-for="item in faqBlock"
-					:key="item.question"
+					v-for="(item, index) in faqBlock"
+					:key="index"
 					:block="item"
+					:index="index"
 				/>
 			</div>
 		</div>

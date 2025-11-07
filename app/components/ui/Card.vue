@@ -1,6 +1,11 @@
 <template>
 	<div class="ui-card">
 		<p class="mono">{{ block.description }}</p>
+		<client-only>
+			<div :class="['ui-card__rive', { right: block.right }]">
+				<canvas-rive :params="{ src: block.rive }" />
+			</div>
+		</client-only>
 	</div>
 </template>
 
@@ -46,6 +51,22 @@ defineProps({
 	p {
 		text-wrap: balance;
 		max-width: 320px;
+	}
+
+	&__rive {
+		position: absolute;
+		width: 65%;
+		aspect-ratio: 1;
+		top: 0;
+
+		&.right {
+			right: 0;
+			transform: translate(calc(-5% + var(--offset) * 0.25%), -30%);
+		}
+
+		&:not(.right) {
+			transform: translate(calc(5% - var(--offset) * 0.25%), -30%);
+		}
 	}
 }
 </style>
