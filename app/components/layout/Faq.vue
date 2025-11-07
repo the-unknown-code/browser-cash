@@ -1,12 +1,16 @@
 <template>
 	<section class="layout-faq">
 		<div class="layout-grid">
-			<div>
+			<div class="layout-faq__content">
 				<ui-text-block :block="block" />
 			</div>
-			<div>
-        <ui-faq :block="faqBlock" />
-      </div>
+			<div class="layout-faq__items">
+				<ui-faq-item
+					v-for="item in faqBlock"
+					:key="item.question"
+					:block="item"
+				/>
+			</div>
 		</div>
 	</section>
 </template>
@@ -26,25 +30,53 @@ const block = {
 	],
 };
 
-const faqBlock = {
-	items: [
-		{
-			question: 'What is Browser Cash?',
-			answer: 'Browser Cash is a browser extension that allows you to earn cash by performing tasks in your browser.',
-		},
-	],
-};
+const faqBlock = [
+	{
+		question: 'What is Browser Cash?',
+		answer:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+	},
+	{
+		question: 'How does Browser Cash work?',
+		answer:
+			'Browser Cash is a browser extension that allows you to earn cash by performing tasks in your browser.',
+	},
+	{
+		question: 'How do I cash in on Browser Cash?',
+		answer:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+	},
+	{
+		question: 'What is Browser Cash?',
+		answer:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+	},
+	{
+		question: 'How does Browser Cash work?',
+		answer:
+			'Browser Cash is a browser extension that allows you to earn cash by performing tasks in your browser.',
+	},
+	{
+		question: 'How do I cash in on Browser Cash?',
+		answer:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+	},
+];
 </script>
 
 <style lang="scss" scoped>
 .layout-faq {
+	position: relative;
 	min-height: 100lvh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	display: block;
 	padding: var(--spacer-64) 0;
+	align-items: start;
 
 	.layout-grid {
+		position: relative;
+		height: auto;
+		align-items: start;
+
 		> * {
 			grid-column: -1 / 1;
 
@@ -57,6 +89,51 @@ const faqBlock = {
 			&:nth-child(2) {
 				@include desktop {
 					grid-column: 6 / span 6;
+				}
+			}
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		@include desktop {
+			position: sticky;
+			top: 0;
+			height: 100vh;
+		}
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacer-16);
+		margin-top: var(--spacer-64);
+
+		@include desktop {
+			margin-top: 0;
+		}
+
+		> * {
+			&:nth-child(3n + 1) {
+				margin-left: 0;
+			}
+
+			// 2nd, 5th, 8th... (64px)
+			&:nth-child(3n + 2) {
+				margin-left: var(--spacer-24);
+				@include desktop {
+					margin-left: var(--spacer-64);
+				}
+			}
+
+			// 3rd, 6th, 9th... (32px)
+			&:nth-child(3n) {
+				margin-left: var(--spacer-16);
+				@include desktop {
+					margin-left: var(--spacer-32);
 				}
 			}
 		}
