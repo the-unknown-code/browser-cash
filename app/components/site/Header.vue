@@ -36,6 +36,8 @@ const { isDesktop } = useBreakpoints();
 	width: 100%;
 	padding: var(--spacer-32) 0 var(--spacer-16) 0;
 	z-index: 100;
+	background: linear-gradient(to bottom, var(--white-80) 40%, transparent 90%);
+	// mix-blend-mode: difference;
 
 	@include desktop {
 		padding: var(--spacer-32) 0 var(--spacer-16) 0;

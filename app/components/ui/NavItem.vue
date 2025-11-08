@@ -1,5 +1,5 @@
 <template>
-	<button :aria-label="label" class="ui-nav-item">
+	<button :aria-label="label" :class="['ui-nav-item', { simple }]">
 		<common-a-link :href="resolveLink(href)" :aria-label="label">
 			<span>{{ label }}</span>
 			<span>{{ label }}</span>
@@ -19,6 +19,10 @@ defineProps({
 		type: String,
 		required: true,
 	},
+	simple: {
+		type: Boolean,
+		default: false,
+	},
 });
 </script>
 
@@ -31,16 +35,20 @@ defineProps({
 		position: relative;
 		display: block;
 		overflow: hidden;
+	}
 
-		&::before {
-			content: '';
-			@include fill(absolute);
-			width: 100%;
-			height: 100%;
-			background-color: var(--black);
-			z-index: 1;
-			transform: translateY(100%);
-			transition: transform var(--duration-fast) var(--ease-in-out-circ);
+	&:not(.simple) {
+		&:deep(.a-div) {
+			&::before {
+				content: '';
+				@include fill(absolute);
+				width: 100%;
+				height: 100%;
+				background-color: var(--black);
+				z-index: 1;
+				transform: translateY(100%);
+				transition: transform var(--duration-fast) var(--ease-in-out-circ);
+			}
 		}
 	}
 
