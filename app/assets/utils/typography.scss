@@ -102,12 +102,28 @@ p, .p {
   @include type('PPNeueMontreal-Regular', 20px, 20px, 20px, 400, 150%);
 }
 
+.p-big {
+  @include type('PPNeueMontreal-Regular', 30px, 30px, 30px, 400, 150%);
+}
+
 .p-small {
   @include type('PPNeueMontreal-Regular', 16px, 16px, 16px, 400, 150%);
 }
 
+.p-icon {
+  @include type('PPNeueMontreal-Regular', 20px, 20px, 20px, 400, 100%);
+}
+
 .mono-emphasized {
   @include type('PPNeueMachina-InktrapRegular', 22px, 22px, 22px, 300, 115%, 0);
+}
+
+.mono-big {
+  @include type('PPNeueMachina-InktrapRegular', 30px, 30px, 30px, 400, 120%, 2%);
+}
+
+.mono-small {
+  @include type('PPNeueMachina-InktrapRegular', 20px, 20px, 20px, 400, 120%, 2%);
 }
 
 .mono {

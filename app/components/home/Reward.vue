@@ -37,32 +37,49 @@
 					/>
 
 					<div class="home-reward__rive__item">
-						<transition name="slide">
-							<canvas-rive
-								:key="activeIndex"
-								:params="{
+						<transition
+							:name="lastIndex > activeIndex ? 'slide-down' : 'slide-up'"
+						>
+							<div :key="activeIndex">
+								<canvas-rive
+									:params="{
 									src: ICONS?.at(activeIndex)?.src as string,
 									layout: new Layout({
 										fit: Fit.Contain,
 										alignment: Alignment.BottomCenter,
 									}),
 								}"
-							/>
+								/>
+								<div>
+									<p class="mono-small">
+										{{ ICONS.at(activeIndex)?.index.padStart(2, '0') }}.
+									</p>
+									<p class="mono-big">{{ ICONS.at(activeIndex)?.title }}</p>
+									<p class="p-icon">{{ ICONS.at(activeIndex)?.description }}</p>
+								</div>
+							</div>
 						</transition>
 					</div>
 				</div>
 				<div v-else class="home-reward__rive__mobile">
 					<div v-for="(icon, index) in ICONS" :key="index">
-						<canvas-rive
-							:key="activeIndex"
-							:params="{
-								src: icon.src,
-								layout: new Layout({
-									fit: Fit.Contain,
-									alignment: Alignment.BottomCenter,
-								}),
-							}"
-						/>
+						<div>
+							<canvas-rive
+								:key="activeIndex"
+								:params="{
+									src: icon.src,
+									layout: new Layout({
+										fit: Fit.Contain,
+										alignment: Alignment.Center,
+									}),
+								}"
+							/>
+						</div>
+						<div>
+							<p class="mono-small">{{ String(index).padStart(2, '0') }}.</p>
+							<p class="mono-big">{{ icon.title }}</p>
+							<p class="p-icon">{{ icon.description }}</p>
+						</div>
 					</div>
 				</div>
 			</client-only>
@@ -75,16 +92,19 @@ import { Alignment, Fit, Layout } from '@rive-app/canvas-lite';
 
 const ICONS = [
 	{
+		index: '1',
 		src: '/rive/browser_install.riv',
 		title: 'Install',
 		description: 'One-click extension setup',
 	},
 	{
+		index: '2',
 		src: '/rive/browser_perform.riv',
 		title: 'Perform',
 		description: 'Your browser performs action passively',
 	},
 	{
+		index: '3',
 		src: '/rive/browser_earn.riv',
 		title: 'Earn',
 		description: 'Accumulate points for rewards',
@@ -93,6 +113,7 @@ const ICONS = [
 
 const $section = ref<HTMLElement | null>(null);
 const activeIndex = ref(0);
+const lastIndex = ref(-1);
 const scope = effectScope();
 
 const { isDesktop } = useBreakpoints();
@@ -103,6 +124,7 @@ scope.run(async () => {
 	useLenis(() => {
 		if (!$section.value) return;
 
+		lastIndex.value = activeIndex.value;
 		const start = 0;
 		const end = $section.value.offsetHeight - height.value;
 		const scrolled = Math.min(Math.max(-top.value, start), end);
@@ -146,8 +168,25 @@ scope.run(async () => {
 
 		> div {
 			position: relative;
+			display: flex;
 			width: 100%;
-			aspect-ratio: 1.85;
+
+			> div {
+				position: relative;
+				width: 100%;
+				aspect-ratio: 1;
+
+				&:nth-child(2) {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+
+					p {
+						max-width: 320px;
+						text-wrap: balance;
+					}
+				}
+			}
 		}
 	}
 
@@ -168,14 +207,33 @@ scope.run(async () => {
 		&__item {
 			position: absolute;
 			width: 70%;
-			height: 70%;
+			aspect-ratio: 1.25;
 			bottom: 0%;
 			left: 50%;
 			transform: translate(-50%, -25%);
 
+			> div {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				bottom: 0;
+				left: 0;
+
+				> div {
+					position: absolute;
+					right: 0;
+					top: 50%;
+					transform: translate(calc(100% - 3vw), -50%);
+
+					p {
+						max-width: 220px;
+					}
+				}
+			}
+
 			@include desktop {
 				width: 40%;
-				height: 40%;
+				// height: 40%;
 			}
 		}
 	}

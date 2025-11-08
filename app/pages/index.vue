@@ -11,6 +11,7 @@
 		<home-reward />
 		<home-companies />
 		<layout-faq />
+		<home-pre-footer />
 	</main>
 </template>
 
