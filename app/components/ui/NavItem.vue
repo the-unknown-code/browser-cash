@@ -1,8 +1,12 @@
 <template>
 	<button :aria-label="label" :class="['ui-nav-item', { simple }]">
 		<common-a-link :href="resolveLink(href)" :aria-label="label">
-			<span>{{ label }}</span>
-			<span>{{ label }}</span>
+			<span class="label">
+				<span>{{ label }}</span>
+			</span>
+			<span class="label">
+				<span>{{ label }}</span>
+			</span>
 		</common-a-link>
 	</button>
 </template>
@@ -53,15 +57,18 @@ defineProps({
 	}
 
 	span {
-		position: relative;
-		display: block;
-		transition: transform var(--duration-medium) var(--ease-in-out-circ);
+		&.label {
+			position: relative;
+			display: flex;
+			align-items: center;
+			transition: transform var(--duration-medium) var(--ease-in-out-circ);
 
-		&:nth-child(2) {
-			position: absolute;
-			left: 0;
-			top: 0;
-			transform: translateY(100%);
+			&:nth-child(2) {
+				position: absolute;
+				left: 0;
+				top: 0;
+				transform: translateY(100%);
+			}
 		}
 	}
 
@@ -74,12 +81,14 @@ defineProps({
 			}
 
 			span {
-				&:nth-child(1) {
-					transform: translateY(-100%);
-				}
+				&.label {
+					&:nth-child(1) {
+						transform: translateY(-100%);
+					}
 
-				&:nth-child(2) {
-					transform: translateY(0);
+					&:nth-child(2) {
+						transform: translateY(0);
+					}
 				}
 			}
 		}

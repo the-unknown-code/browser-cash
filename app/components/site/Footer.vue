@@ -2,10 +2,32 @@
 	<footer class="site-footer">
 		<ul class="layout-grid">
 			<li class="nav-item">
+				<ui-nav-item href="/extension" label="Extension" simple />
 				<ui-nav-item href="/enterprise" label="Enterprise" simple />
 			</li>
-			<li class="nav-item"></li>
-			<li class="nav-item"></li>
+			<li class="nav-item">
+				<ui-nav-item href="/blog" label="Blog" simple />
+				<ui-nav-item
+					href="http://www.google.com"
+					label="Docs"
+					simple
+					external
+					/>
+			</li>
+			<li class="nav-item">
+				<ui-nav-item
+					href="https://www.google.com"
+					label="Link 01"
+					simple
+					external
+				/>
+				<ui-nav-item
+					href="https://www.google.com"
+					label="Link 02"
+					simple
+					external
+				/>
+			</li>
 		</ul>
 	</footer>
 </template>
