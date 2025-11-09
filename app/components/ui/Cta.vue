@@ -1,13 +1,19 @@
 <template>
-	<button :class="['ui-cta', `ui-cta--${type}`]">
+	<button :class="['ui-cta', `ui-cta--${type}`, { external }]">
 		<common-a-link :href="resolveLink(href)" :aria-label="label">
 			<div class="ui-cta--content">
 				<span>{{ label }}</span>
-				<common-svg-mask v-if="icon" :svg="icon" />
+				<common-svg-mask
+					v-if="icon || external"
+					:svg="external ? '/images/link-arrow.svg' : icon"
+				/>
 			</div>
 			<div class="ui-cta--content">
 				<span>{{ label }}</span>
-				<common-svg-mask v-if="icon" :svg="icon" />
+				<common-svg-mask
+					v-if="icon || external"
+					:svg="external ? '/images/link-arrow.svg' : icon"
+				/>
 			</div>
 		</common-a-link>
 	</button>
@@ -39,6 +45,10 @@ defineProps({
 		required: false,
 		default: null,
 	},
+	external: {
+		type: Boolean,
+		default: false,
+	},
 });
 </script>
 
@@ -51,6 +61,14 @@ defineProps({
 	border: 1px solid var(--black);
 	border-radius: var(--spacer-4);
 	overflow: hidden;
+
+	&.external {
+		&:deep(.svg-mask) {
+			width: 12px;
+			height: 12px;
+			transform: translateY(-1px);
+		}
+	}
 
 	&::before {
 		content: '';

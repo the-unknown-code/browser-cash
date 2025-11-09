@@ -83,6 +83,7 @@ defineProps({
 			width: 12px;
 			height: 12px;
 			background-color: var(--black);
+			transform: translateY(-1px);
 		}
 	}
 

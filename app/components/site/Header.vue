@@ -4,13 +4,18 @@
 			<ui-logo />
 			<ul v-show="isDesktop" role="navigation" class="site-header__nav">
 				<li role="navigation-item">
+					<ui-nav-item href="/extension" label="Extension" />
 					<ui-nav-item href="/enterprise" label="Enterprise" />
+					<ui-nav-item href="/blog" label="Blog" />
+					<ui-nav-item href="https://www.google.com" label="Docs" external />
+					<ui-nav-item href="/contact-us" label="Contact Us" />
 				</li>
 				<li>
 					<ui-cta
 						href="https://www.google.com"
 						label="Login"
 						:type="BUTTON_TYPES.PRIMARY"
+						external
 					/>
 				</li>
 				<li>
@@ -18,6 +23,7 @@
 						href="https://www.google.com"
 						label="Sign Up"
 						:type="BUTTON_TYPES.SECONDARY"
+						external
 					/>
 				</li>
 			</ul>

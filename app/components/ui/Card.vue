@@ -55,7 +55,7 @@ defineProps({
 
 	&__rive {
 		position: absolute;
-		width: 65%;
+		width: 75%;
 		aspect-ratio: 1;
 		top: 0;
 
