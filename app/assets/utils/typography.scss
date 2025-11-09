@@ -114,6 +114,11 @@ p, .p {
   @include type('PPNeueMontreal-Regular', 20px, 20px, 20px, 400, 100%);
 }
 
+caption, 
+.caption {
+  @include type('PPNeueMontreal-Regular', 12px, 12px, 12px, 400, 100%);
+}
+
 .mono-emphasized {
   @include type('PPNeueMachina-InktrapRegular', 22px, 22px, 22px, 300, 115%, 0);
 }

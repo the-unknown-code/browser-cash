@@ -12,7 +12,7 @@
 					label="Docs"
 					simple
 					external
-					/>
+				/>
 			</li>
 			<li class="nav-item">
 				<ui-nav-item
@@ -28,7 +28,29 @@
 					external
 				/>
 			</li>
+			<li class="social">
+				<div class="social-item">
+					<common-a-link href="https://www.discord.com" aria-label="Discord">
+						<common-svg-mask svg="/images/discord.svg" />
+					</common-a-link>
+				</div>
+				<div class="social-item">
+					<common-a-link href="https://www.telegram.com" aria-label="Telegram">
+						<common-svg-mask svg="/images/telegram.svg" />
+					</common-a-link>
+				</div>
+				<div class="social-item">
+					<common-a-link href="https://www.x.com" aria-label="X">
+						<common-svg-mask svg="/images/x.svg" />
+					</common-a-link>
+				</div>
+			</li>
 		</ul>
+		<div class="layout-grid">
+			<caption>
+				Copyright @BrowserCash - 2025
+			</caption>
+		</div>
 	</footer>
 </template>
 
@@ -38,20 +60,68 @@
 .site-footer {
 	position: relative;
 	background-color: var(--yellow);
-	padding: var(--spacer-32) 0;
+	padding: var(--spacer-32) 0 var(--spacer-32) 0;
 
 	ul {
 		padding-bottom: var(--spacer-64);
 	}
 
-	.nav-item {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacer-16);
-
-		@include desktop {
+	li {
+		&.nav-item {
+			display: flex;
+			flex-direction: column;
+			gap: var(--spacer-16);
 			grid-column: span 2;
+			margin-bottom: var(--spacer-16);
 		}
+
+		&.social {
+			display: flex;
+			flex-direction: row;
+			gap: var(--spacer-16);
+			grid-column: -1 / 1;
+
+			@include desktop {
+				justify-content: flex-end;
+				grid-column: span 6;
+			}
+		}
+
+		.social-item {
+			position: relative;
+			border-radius: 50%;
+			width: 48px;
+			height: 48px;
+
+			&:deep(.svg-mask) {
+				position: relative;
+				width: 48px;
+				height: 48px;
+				background-color: var(--black);
+			}
+
+			@include desktop {
+				transition: background-color var(--duration-fast)
+					var(--ease-in-out-circ);
+
+				&:deep(.svg-mask) {
+					transition: background-color var(--duration-fast)
+						var(--ease-in-out-circ);
+				}
+
+				&:hover {
+					background-color: var(--black);
+
+					&:deep(.svg-mask) {
+						background-color: var(--yellow);
+					}
+				}
+			}
+		}
+	}
+
+	caption {
+		grid-column: -1 / 1;
 	}
 }
 </style>

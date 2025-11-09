@@ -3,9 +3,11 @@
 		<common-a-link :href="resolveLink(href)" :aria-label="label">
 			<span class="label">
 				<span>{{ label }}</span>
+				<common-svg-mask v-if="external" svg="/images/link-arrow.svg" />
 			</span>
 			<span class="label">
 				<span>{{ label }}</span>
+				<common-svg-mask v-if="external" svg="/images/link-arrow.svg" />
 			</span>
 		</common-a-link>
 	</button>
@@ -24,6 +26,10 @@ defineProps({
 		required: true,
 	},
 	simple: {
+		type: Boolean,
+		default: false,
+	},
+	external: {
 		type: Boolean,
 		default: false,
 	},
@@ -60,6 +66,7 @@ defineProps({
 		&.label {
 			position: relative;
 			display: flex;
+			gap: var(--spacer-4);
 			align-items: center;
 			transition: transform var(--duration-medium) var(--ease-in-out-circ);
 
@@ -69,6 +76,13 @@ defineProps({
 				top: 0;
 				transform: translateY(100%);
 			}
+		}
+
+		&:deep(.svg-mask) {
+			position: relative;
+			width: 12px;
+			height: 12px;
+			background-color: var(--black);
 		}
 	}
 
