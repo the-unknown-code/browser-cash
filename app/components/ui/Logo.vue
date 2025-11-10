@@ -1,5 +1,5 @@
 <template>
-	<div class="ui-logo">
+	<common-a-link href="/" class="ui-logo">
 		<svg
 			width="240"
 			height="34"
@@ -107,7 +107,7 @@
 				</linearGradient>
 			</defs>
 		</svg>
-	</div>
+	</common-a-link>
 </template>
 <script setup lang="ts"></script>
 

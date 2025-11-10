@@ -57,7 +57,7 @@ defineProps({
 	position: relative;
 	width: max-content;
 	user-select: none;
-	padding: var(--spacer-16) var(--spacer-16);
+
 	border: 1px solid var(--black);
 	border-radius: var(--spacer-4);
 	overflow: hidden;
@@ -113,6 +113,7 @@ defineProps({
 		align-items: center;
 		justify-content: center;
 		gap: var(--spacer-8);
+		padding: var(--spacer-16) var(--spacer-16);
 		transition: transform var(--duration-medium) var(--ease-in-out-circ);
 
 		&:nth-child(2) {

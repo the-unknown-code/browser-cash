@@ -1,10 +1,14 @@
-<script setup lang="ts"></script>
-
 <template>
-	<div class="ui-frame">
+	<div :class="['ui-frame', $store.theme]">
 		<div />
 	</div>
 </template>
+
+<script setup lang="ts">
+import useAppStore from '~/store/useAppStore';
+
+const $store = useAppStore();
+</script>
 
 <style lang="scss" scoped>
 .ui-frame {
@@ -15,6 +19,10 @@
 	z-index: 9999;
 	border: var(--spacer-16) solid var(--white);
 	border-collapse: collapse;
+
+	&:where(.theme-dark) {
+		border-color: var(--off-white);
+	}
 
 	> div {
 		@include fill(absolute);

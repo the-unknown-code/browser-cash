@@ -199,7 +199,7 @@ scope.run(async () => {
 		@include desktop {
 			position: absolute;
 			right: 0;
-			bottom: 0;
+			bottom: 5%;
 			width: 80%;
 			height: 100%;
 		}

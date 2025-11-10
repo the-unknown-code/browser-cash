@@ -70,8 +70,8 @@ const themes: any = {
 		contrast: colors['yellow'],
 	},
 	dark: {
-		bg: colors['black'],
-		fg: colors['white'],
+		bg: colors['off-white'],
+		fg: colors['black'],
 		contrast: colors['yellow'],
 	},
 };

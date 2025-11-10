@@ -1,5 +1,5 @@
 <template>
-	<button :aria-label="label" :class="['ui-nav-item', { simple }]">
+	<div :class="['ui-nav-item button', { simple }]">
 		<common-a-link :href="resolveLink(href)" :aria-label="label">
 			<span class="label">
 				<span>{{ label }}</span>
@@ -10,7 +10,7 @@
 				<common-svg-mask v-if="external" svg="/images/link-arrow.svg" />
 			</span>
 		</common-a-link>
-	</button>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -38,6 +38,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .ui-nav-item {
+	width: max-content;
 	user-select: none;
 	padding: var(--spacer-4) var(--spacer-8);
 

@@ -35,7 +35,6 @@ const scope = effectScope();
 scope.run(async () => {
 	useLenis(({ velocity }: { velocity: number }) => {
 		if (!$section.value) return;
-		console.log(velocity / 100);
 		$section.value.style.setProperty('--velocity', (velocity / 100).toString());
 	});
 });

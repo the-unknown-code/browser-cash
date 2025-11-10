@@ -1,5 +1,5 @@
 <template>
-	<footer class="site-footer">
+	<footer :class="['site-footer', $store.theme]">
 		<ul class="layout-grid">
 			<li class="nav-item">
 				<ui-nav-item href="/extension" label="Extension" simple />
@@ -54,13 +54,22 @@
 	</footer>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import useAppStore from '~/store/useAppStore';
+
+const $store = useAppStore();
+</script>
 
 <style lang="scss" scoped>
 .site-footer {
 	position: relative;
 	background-color: var(--yellow);
 	padding: var(--spacer-32) 0 var(--spacer-32) 0;
+	transition: background-color var(--duration-fast) var(--ease-in-out-circ);
+
+	&:where(.theme-dark) {
+		background-color: var(--teal);
+	}
 
 	ul {
 		padding-bottom: var(--spacer-64);

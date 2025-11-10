@@ -3,18 +3,31 @@
 		<div class="layout-block">
 			<ui-logo />
 			<ul v-show="isDesktop" role="navigation" class="site-header__nav">
-				<li role="navigation-item">
+				<li>
 					<ui-nav-item href="/extension" label="Extension" />
+				</li>
+				<li>
 					<ui-nav-item href="/enterprise" label="Enterprise" />
+				</li>
+				<li>
 					<ui-nav-item href="/blog" label="Blog" />
+				</li>
+				<li>
 					<ui-nav-item href="https://www.google.com" label="Docs" external />
+				</li>
+				<li>
 					<ui-nav-item href="/contact-us" label="Contact Us" />
 				</li>
+
 				<li>
 					<ui-cta
 						href="https://www.google.com"
 						label="Login"
-						:type="BUTTON_TYPES.PRIMARY"
+						:type="
+							$route.name === 'enterprise'
+								? BUTTON_TYPES.INVERTED
+								: BUTTON_TYPES.PRIMARY
+						"
 						external
 					/>
 				</li>
@@ -59,7 +72,7 @@ const { isDesktop } = useBreakpoints();
 		position: relative;
 		display: flex;
 		align-items: center;
-		gap: var(--spacer-16);
+		gap: var(--spacer-8);
 	}
 }
 </style>
