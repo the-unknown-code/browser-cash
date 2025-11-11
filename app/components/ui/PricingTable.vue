@@ -1,5 +1,13 @@
 <template>
 	<div class="ui-pricing-table">
+		<nuxt-img
+			src="/images/smile.png"
+			alt="Smile"
+			loading="lazy"
+			quality="100"
+			format="webp"
+			class="icon"
+		/>
 		<div class="ui-pricing-table__grid">
 			<div>
 				<p class="p-tiny">INPUTS</p>
@@ -110,6 +118,25 @@
 	display: flex;
 	flex-direction: column;
 	user-select: none;
+
+	img {
+		position: absolute;
+		top: 0;
+
+		@include mobile {
+			right: 0;
+			width: 70px;
+			height: auto;
+			transform: translate(0%, -50%) rotate(20deg);
+		}
+
+		@include desktop {
+			left: 0;
+			width: 90px;
+			height: auto;
+			transform: translate(-50%, -30%) rotate(-20deg);
+		}
+	}
 
 	&::before {
 		content: '';

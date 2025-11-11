@@ -128,6 +128,12 @@ tryOnBeforeUnmount(() => {
 		transition: transform var(--duration-fast) var(--ease-in-out-circ);
 	}
 
+	&:where(.theme-dark *) {
+		&::before {
+			background-color: var(--teal);
+		}
+	}
+
 	&.active {
 		margin-bottom: var(--spacer-16);
 
@@ -182,6 +188,16 @@ tryOnBeforeUnmount(() => {
 		&:hover {
 			circle {
 				fill: var(--yellow);
+			}
+		}
+	}
+
+	&:where(.theme-dark *) {
+		@include desktop {
+			&:hover {
+				circle {
+					fill: var(--teal);
+				}
 			}
 		}
 	}

@@ -1,31 +1,36 @@
 <template>
-	<section ref="$section" class="home-reward">
+	<section ref="$section" class="enterprise-ready">
 		<div>
 			<hgroup>
 				<div role="heading" aria-level="1" class="h2">
 					<animation-block>
-						<span>Browser</span>
+						<span>Ready to</span>
+					</animation-block>
+					<animation-block :delay="0.1">
+						<span>launch</span>
 						<nuxt-img
-							src="/images/smile.png"
+							src="/images/energy-teal.png"
 							alt="Smiley"
 							loading="lazy"
 							quality="80"
 							format="webp"
 							class="icon"
 						/>
-						<span>Cash</span>
-					</animation-block>
-					<animation-block :delay="0.1">
-						<span>makes browsing</span>
+						<span>your</span>
 					</animation-block>
 					<animation-block :delay="0.2">
-						<span>rewarding</span>
+						<span>first task?</span>
+						<ui-cta
+							:type="BUTTON_TYPES.INVERTED"
+							href="https://www.google.com"
+							label="Sign Up Now"
+						/>
 					</animation-block>
 				</div>
 			</hgroup>
 
 			<client-only>
-				<div v-if="isDesktop" class="home-reward__rive">
+				<div v-if="isDesktop" class="enterprise-ready__rive">
 					<canvas-rive
 						:params="{
 							src: '/rive/browser_grid.riv',
@@ -36,7 +41,7 @@
 						}"
 					/>
 
-					<div class="home-reward__rive__item">
+					<div class="enterprise-ready__rive__item">
 						<transition
 							:name="lastIndex > activeIndex ? 'slide-down' : 'slide-up'"
 						>
@@ -61,7 +66,7 @@
 						</transition>
 					</div>
 				</div>
-				<div v-else class="home-reward__rive__mobile">
+				<div v-else class="enterprise-ready__rive__mobile">
 					<div v-for="(icon, index) in ICONS" :key="index">
 						<div>
 							<canvas-rive
@@ -91,25 +96,26 @@
 
 <script setup lang="ts">
 import { Alignment, Fit, Layout } from '@rive-app/canvas-lite';
+import { BUTTON_TYPES } from '~/libs/constants/ui';
 
 const ICONS = [
 	{
 		index: '1',
-		src: '/rive/browser_install.riv',
-		title: 'Install',
-		description: 'One-click extension setup',
+		src: '/rive/enterprise/03_describe.riv',
+		title: 'DESCRIBE',
+		description: 'Tell us the actions you need done',
 	},
 	{
 		index: '2',
-		src: '/rive/browser_perform.riv',
-		title: 'Perform',
-		description: 'Your browser performs action passively',
+		src: '/rive/enterprise/03_deploy.riv',
+		title: 'DEPLOY',
+		description: 'AI Agents learn your workflow',
 	},
 	{
 		index: '3',
-		src: '/rive/browser_earn.riv',
-		title: 'Earn',
-		description: 'Accumulate points for rewards',
+		src: '/rive/enterprise/03_scale.riv',
+		title: 'SCALE',
+		description: 'From 1 to 10.000 instantly',
 	},
 ];
 
@@ -138,7 +144,7 @@ scope.run(async () => {
 </script>
 
 <style lang="scss" scoped>
-.home-reward {
+.enterprise-ready {
 	position: relative;
 	display: flex;
 	flex-direction: column;

@@ -1,5 +1,5 @@
 <template>
-	<section class="layout-faq">
+	<section :class="['layout-faq', theme]">
 		<div class="layout-grid">
 			<div class="layout-faq__content">
 				<ui-text-block :block="block" />
@@ -17,7 +17,15 @@
 </template>
 
 <script setup lang="ts">
-import { BUTTON_TYPES } from '~/libs/constants/ui';
+import { BUTTON_TYPES, THEMES } from '~/libs/constants/ui';
+
+const props = defineProps({
+	theme: {
+		type: String,
+		required: false,
+		default: THEMES.LIGHT,
+	},
+});
 
 const block = {
 	title: 'Your questions, answered.',
@@ -26,7 +34,10 @@ const block = {
 		{
 			label: 'SCALE YOUR AI VISION',
 			href: '/extension',
-			type: BUTTON_TYPES.PRIMARY,
+			type:
+				props.theme === THEMES.DARK
+					? BUTTON_TYPES.INVERTED
+					: BUTTON_TYPES.PRIMARY,
 		},
 	],
 };
@@ -72,6 +83,9 @@ const faqBlock = [
 	display: block;
 	padding: var(--spacer-64) 0;
 	align-items: start;
+
+	&.theme-dark {
+	}
 
 	.layout-grid {
 		position: relative;

@@ -1,11 +1,10 @@
 <template>
 	<section class="enterprise-grid">
-		<!--
 		<client-only>
 			<div v-show="isDesktop" class="enterprise-grid__rive">
 				<canvas-rive
 					:params="{
-						src: '/rive/enterprise/grid.riv',
+						src: '/rive/enterprise/enterprise_grid.riv',
 						layout: new Layout({
 							fit: Fit.Contain,
 							alignment: Alignment.Center,
@@ -14,7 +13,7 @@
 				/>
 			</div>
 		</client-only>
-    -->
+
 		<div v-show="!isDesktop" class="enterprise-grid__content">
 			<div v-for="item in GRID" :key="item.title" class="grid-item">
 				<client-only>

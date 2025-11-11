@@ -5,9 +5,14 @@
 		<enterprise-grid />
 		<enterprise-accuracy />
 		<enterprise-pricing />
+		<enterprise-ready />
+		<layout-faq :theme="THEMES.DARK" />ù
+		<enterprise-form />
 	</main>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { THEMES } from '~/libs/constants/ui';
+</script>
 
 <style lang="scss" scoped></style>
