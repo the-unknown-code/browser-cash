@@ -1,5 +1,5 @@
 <template>
-	<section class="extension-pre-footer">
+	<section id="extension-pre-footer" class="extension-pre-footer">
 		<client-only>
 			<div class="extension-pre-footer__rive">
 				<canvas-rive

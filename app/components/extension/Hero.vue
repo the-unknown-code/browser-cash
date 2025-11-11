@@ -40,6 +40,7 @@
 				</animation-block>
 			</h1>
 		</hgroup>
+
 		<client-only>
 			<div class="extension-hero__rive">
 				<canvas-rive
@@ -52,24 +53,95 @@
 				/>
 			</div>
 		</client-only>
+
+		<div v-show="isDesktop" class="extension-hero__cta">
+			<ui-cta
+				:type="BUTTON_TYPES.PRIMARY"
+				href="https://www.google.com"
+				label="Download for Chrome"
+				icon="/images/chrome.svg"
+			/>
+			<ui-cta
+				:type="BUTTON_TYPES.PRIMARY"
+				href="https://www.google.com"
+				label="Download for Windows"
+				icon="/images/windows.svg"
+			/>
+			<ui-cta
+				:type="BUTTON_TYPES.PRIMARY"
+				href="https://www.google.com"
+				label="Download for Linux"
+				icon="/images/linux.svg"
+			/>
+		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
 import { Fit, Layout } from '@rive-app/canvas-lite';
 import { BUTTON_TYPES } from '~/libs/constants/ui';
+const { isDesktop } = useBreakpoints();
 </script>
 
 <style lang="scss" scoped>
 .extension-hero {
 	position: relative;
-	min-height: 100lvh;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 
 	@include desktop {
+		min-height: 100lvh;
 		justify-content: center;
+	}
+
+	&__cta {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacer-16);
+
+		@include desktop {
+			position: absolute;
+			flex-direction: row;
+			bottom: var(--spacer-64);
+			left: 0;
+			width: 100%;
+			margin-top: var(--spacer-64);
+			align-items: center;
+			justify-content: center;
+		}
+
+		&:deep(.ui-cta) {
+			max-width: 320px;
+
+			span {
+				order: 2;
+			}
+
+			@include desktop {
+				max-width: unset;
+			}
+
+			@include mobile {
+				width: 100%;
+
+				a {
+					width: 100%;
+				}
+
+				.ui-cta--content {
+					justify-content: center;
+					width: 100%;
+				}
+			}
+		}
+
+		&:deep(.svg-mask) {
+			order: 1;
+		}
 	}
 
 	&__rive {
