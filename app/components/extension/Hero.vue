@@ -32,10 +32,12 @@
 				<animation-block :delay="0.3">
 					<span>agents.</span>
 					<ui-cta
+						v-show="!isDesktop"
 						:type="BUTTON_TYPES.PRIMARY"
-						href="/extension"
+						href="#"
 						label="Download  extension"
 						icon="/images/arrow.svg"
+						:callback="onCtaClick"
 					/>
 				</animation-block>
 			</h1>
@@ -48,6 +50,7 @@
 						src: '/rive/extension/main.riv',
 						layout: new Layout({
 							fit: Fit.Contain,
+							alignment: Alignment.CenterRight,
 						}),
 					}"
 				/>
@@ -78,9 +81,14 @@
 </template>
 
 <script setup lang="ts">
-import { Fit, Layout } from '@rive-app/canvas-lite';
+import { Alignment, Fit, Layout } from '@rive-app/canvas-lite';
 import { BUTTON_TYPES } from '~/libs/constants/ui';
 const { isDesktop } = useBreakpoints();
+
+const lenis = useLenis();
+const onCtaClick = () => {
+	lenis.value?.scrollTo('#extension-pre-footer');
+};
 </script>
 
 <style lang="scss" scoped>
@@ -146,7 +154,7 @@ const { isDesktop } = useBreakpoints();
 
 	&__rive {
 		position: relative;
-		aspect-ratio: 1.75;
+		aspect-ratio: 2;
 		width: 200%;
 		left: -100%;
 		z-index: -1;

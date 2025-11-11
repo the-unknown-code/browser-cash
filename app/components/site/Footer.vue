@@ -66,6 +66,7 @@ const $store = useAppStore();
 	background-color: var(--yellow);
 	padding: var(--spacer-32) 0 var(--spacer-32) 0;
 	transition: background-color var(--duration-fast) var(--ease-in-out-circ);
+	margin-top: auto;
 
 	&:where(.theme-dark) {
 		background-color: var(--teal);

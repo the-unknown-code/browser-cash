@@ -5,7 +5,7 @@
 	<!-- CUSTOM PAGE TRANSITION -->
 	<client-only>
 		<teleport to="body">
-			<div id="page-transition" ref="$transition" />
+			<div id="page-transition" :class="[$store.theme]" ref="$transition" />
 		</teleport>
 	</client-only>
 </template>
@@ -44,7 +44,7 @@ hook('page:finish', () => {
 		await nextTick();
 		gsap.to($transition.value, {
 			opacity: 0,
-			duration: GSAPDuration.FAST,
+			duration: GSAPDuration.DEFAULT,
 			ease: GSAPEase.SLOW_IN_OUT,
 		});
 	}, 0);
@@ -54,9 +54,23 @@ hook('page:finish', () => {
 <style lang="scss" scoped>
 #page-transition {
 	@include fill(fixed);
-	background-color: var(--green);
-	opacity: 0;
-	z-index: 999;
+	opacity: 1;
+	z-index: 9999;
 	pointer-events: none;
+
+	&::before {
+		content: '';
+		@include fill(absolute);
+		background-color: var(--yellow);
+		opacity: 1;
+		z-index: 1;
+		transition: background-color var(--duration-fast) var(--ease-in-out-circ);
+	}
+
+	&.theme-dark {
+		&::before {
+			background-color: var(--teal);
+		}
+	}
 }
 </style>

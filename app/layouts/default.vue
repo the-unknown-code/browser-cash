@@ -10,6 +10,8 @@
 			<site-footer />
 
 			<client-only>
+				<ui-frame />
+
 				<dev-only>
 					<debug-orchestra />
 				</dev-only>

@@ -1,5 +1,8 @@
 <template>
-	<button :class="['ui-cta', `ui-cta--${type}`, { external }]">
+	<button
+		:class="['ui-cta', `ui-cta--${type}`, { external }]"
+		@click="onClickHandler"
+	>
 		<common-a-link :href="resolveLink(href)" :aria-label="label">
 			<div class="ui-cta--content">
 				<span>{{ label }}</span>
@@ -23,7 +26,7 @@
 import { BUTTON_TYPES } from '~/libs/constants/ui';
 import { resolveLink } from '~/libs/storyblok/utils';
 
-defineProps({
+const props = defineProps({
 	href: {
 		type: String,
 		required: true,
@@ -49,7 +52,20 @@ defineProps({
 		type: Boolean,
 		default: false,
 	},
+	callback: {
+		type: Function,
+		required: false,
+		default: null,
+	},
 });
+
+const onClickHandler = (e: MouseEvent | PointerEvent) => {
+	if (props.callback) {
+		e.stopPropagation();
+		e.preventDefault();
+		props.callback();
+	}
+};
 </script>
 
 <style lang="scss" scoped>

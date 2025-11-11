@@ -174,6 +174,7 @@
 
 		g {
 			transition: transform var(--duration-medium) var(--ease-in-out-circ);
+			transition-delay: var(--duration-medium);
 
 			&.dark {
 				transform: translate(0, 100%);

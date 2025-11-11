@@ -18,10 +18,6 @@
 		<nuxt-layout>
 			<nuxt-page />
 		</nuxt-layout>
-
-		<client-only>
-			<ui-frame />
-		</client-only>
 	</div>
 </template>
 
