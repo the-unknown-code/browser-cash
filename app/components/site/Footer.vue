@@ -47,7 +47,9 @@
 			</li>
 		</ul>
 		<div class="layout-grid">
-			<span class="caption"> Copyright @BrowserCash - 2025 </span>
+			<span class="caption">
+				Copyright @BrowserCash - {{ new Date().getFullYear() }}
+			</span>
 		</div>
 	</footer>
 </template>
@@ -121,6 +123,18 @@ const $store = useAppStore();
 
 					&:deep(.svg-mask) {
 						background-color: var(--yellow);
+					}
+				}
+			}
+		}
+	}
+
+	&:where(.theme-dark *) {
+		.social-item {
+			@include desktop {
+				&:hover {
+					&:deep(.svg-mask) {
+						background-color: var(--teal) !important;
 					}
 				}
 			}

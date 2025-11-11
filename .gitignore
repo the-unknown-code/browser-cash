@@ -19,6 +19,8 @@ logs
 .idea
 
 # Local env files
+.eslintcache
 .env
+.env.local
 .env.*
 !.env.example

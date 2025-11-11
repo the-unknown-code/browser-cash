@@ -6,7 +6,7 @@
 					:params="{
 						src: '/rive/grid_footer.riv',
 						layout: new Layout({
-							fit: Fit.Contain,
+							fit: Fit.Cover,
 							alignment: Alignment.BottomCenter,
 						}),
 					}"

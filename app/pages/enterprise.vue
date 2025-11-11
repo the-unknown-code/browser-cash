@@ -6,7 +6,7 @@
 		<enterprise-accuracy />
 		<enterprise-pricing />
 		<enterprise-ready />
-		<layout-faq :theme="THEMES.DARK" />ù
+		<layout-faq :theme="THEMES.DARK" />
 		<enterprise-form />
 	</main>
 </template>
