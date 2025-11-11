@@ -3,5 +3,9 @@
 :root {
     @each $name, $color in getColors() {
         --#{$name}: #{$color};
+
+        .#{$name} {
+            color: #{$color};
+        }
     }
 }

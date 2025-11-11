@@ -60,6 +60,7 @@ const colors: any = generateShades({
 	white: '#fffdfd',
 	yellow: '#FFD417',
 	teal: '#7CE7CF',
+	aqua: '#3FDAB8',
 });
 
 // Define light and dark themes using generated colors

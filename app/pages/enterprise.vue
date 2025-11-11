@@ -3,6 +3,8 @@
 		<enterprise-hero />
 		<enterprise-companies />
 		<enterprise-grid />
+		<enterprise-accuracy />
+		<enterprise-pricing />
 	</main>
 </template>
 

@@ -47,9 +47,7 @@
 			</li>
 		</ul>
 		<div class="layout-grid">
-			<caption>
-				Copyright @BrowserCash - 2025
-			</caption>
+			<span class="caption"> Copyright @BrowserCash - 2025 </span>
 		</div>
 	</footer>
 </template>
@@ -129,7 +127,7 @@ const $store = useAppStore();
 		}
 	}
 
-	caption {
+	.caption {
 		grid-column: -1 / 1;
 	}
 }

@@ -95,12 +95,16 @@ h3, .h3 {
   @include type('PPNeueMontreal-Regular', 60px, 40px, 80px, 400, 100%);
 }
 
+h4, .h4 {
+  @include type('PPNeueMontreal-Regular', 48px, 48px, 48px, 400, 100%);
+}
+
 @mixin p {
   @include type('PPNeueMontreal-Regular', 20px, 16px, 24px, 400, 100%);
 }
 
 p, .p {
-  @include type('PPNeueMontreal-Regular', 20px, 20px, 20px, 400, 150%);
+  @include type('PPNeueMontreal-Regular', 18px, 16px, 20px, 400, 150%);
 }
 
 .p-big {
@@ -109,6 +113,10 @@ p, .p {
 
 .p-small {
   @include type('PPNeueMontreal-Regular', 16px, 16px, 16px, 400, 150%);
+}
+
+.p-tiny {
+  @include type('PPNeueMontreal-Regular', 12px, 12px, 12px, 400, 150%);
 }
 
 .p-icon {
@@ -134,6 +142,10 @@ caption,
 
 .mono {
   @include type('PPNeueMachina-InktrapRegular', 20px, 16px, 24px, 400, 120%, 2%);
+}
+
+.mono-tiny {
+  @include type('PPNeueMachina-InktrapRegular', 12px, 12px, 12px, 400, 150%, 0);
 }
 
 

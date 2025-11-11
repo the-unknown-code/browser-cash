@@ -1,7 +1,9 @@
 <template>
 	<div class="ui-text-block">
 		<h3 v-if="block.title" class="h3">{{ block.title }}</h3>
-		<p v-if="block.description" class="p">{{ block.description }}</p>
+		<p v-for="item in parsedDescription" :key="item.label" class="p">
+			{{ item.label }}
+		</p>
 		<div class="ui-text-block__actions">
 			<ui-cta
 				v-for="cta in block.cta"
@@ -16,11 +18,35 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
 	block: {
 		type: Object,
 		required: true,
 	},
+});
+
+const parsedDescription = computed(() => {
+	const desc = props.block?.description;
+
+	if (!desc) return [];
+
+	if (Array.isArray(desc)) {
+		return desc.map(item => ({
+			label: item,
+			type: 'p',
+		}));
+	}
+
+	if (typeof desc === 'string') {
+		return [
+			{
+				label: desc,
+				type: 'p',
+			},
+		];
+	}
+
+	return null;
 });
 </script>
 
