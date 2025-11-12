@@ -16,6 +16,7 @@ export const STORYBLOK_COMPONENTS = {
 	FAQ: 'faq',
 	HEADER: 'header',
 	FOOTER: 'footer',
+	GLOBAL_LINKS: 'global-links',
 } as const;
 
 export const ARTICLE_CONTENT_TYPES = {

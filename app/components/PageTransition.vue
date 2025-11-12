@@ -32,6 +32,7 @@ const onBeforeEnter = async () => {
 };
 
 const onEnter = async (e: Element, done: () => void) => {
+	$store.enable();
 	done();
 };
 

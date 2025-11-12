@@ -1,5 +1,5 @@
 <template>
-	<common-a-link href="/" class="ui-logo">
+	<common-a-link href="/" class="ui-logo" aria-label="Browser Cash Homepage">
 		<svg
 			width="240"
 			height="34"

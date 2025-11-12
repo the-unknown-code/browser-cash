@@ -15,11 +15,11 @@
 			$store.theme
 		]"
 	>
-		<nuxt-layout>
-			<storyblok-wrapper url="global">
+		<storyblok-wrapper url="global">
+			<nuxt-layout>
 				<nuxt-page />
-			</storyblok-wrapper>
-		</nuxt-layout>
+			</nuxt-layout>
+		</storyblok-wrapper>
 	</div>
 </template>
 

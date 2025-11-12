@@ -18,19 +18,19 @@
 			<div class="extension-pre-footer__content__buttons">
 				<ui-cta
 					:type="BUTTON_TYPES.PRIMARY"
-					href="https://www.google.com"
+					:href="resolveLink(GLOBAL_LINKS.chrome_link)"
 					label="Download for Chrome"
 					icon="/images/chrome.svg"
 				/>
 				<ui-cta
 					:type="BUTTON_TYPES.PRIMARY"
-					href="https://www.google.com"
+					:href="resolveLink(GLOBAL_LINKS.windows_link)"
 					label="Download for Windows"
 					icon="/images/windows.svg"
 				/>
 				<ui-cta
 					:type="BUTTON_TYPES.PRIMARY"
-					href="https://www.google.com"
+					:href="resolveLink(GLOBAL_LINKS.linux_link)"
 					label="Download for Linux"
 					icon="/images/linux.svg"
 				/>
@@ -41,7 +41,16 @@
 
 <script setup lang="ts">
 import { Alignment, Fit, Layout } from '@rive-app/canvas-lite';
-import { BUTTON_TYPES } from '~/libs/constants/ui';
+import { BUTTON_TYPES, STORYBLOK_COMPONENTS } from '~/libs/constants/ui';
+import { resolveLink } from '~/libs/storyblok/utils';
+import useAppStore from '~/store/useAppStore';
+const $store = useAppStore();
+
+const GLOBAL_LINKS = computed(() => {
+	return $store.globalSettings.content?.body?.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.GLOBAL_LINKS
+	);
+});
 </script>
 
 <style lang="scss" scoped>
