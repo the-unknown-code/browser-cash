@@ -11,7 +11,8 @@ export default defineStore('app.store', {
 		theme: 'theme-light',
 		enabled: false,
 		stories: [] as Story[],
-		settings: {} as any,
+		settings: null,
+		isReady: false,
 	}),
 	getters: {
 		isEnabled: (state: any) => state.enabled,
@@ -40,6 +41,7 @@ export default defineStore('app.store', {
 		},
 		saveSettings(data: any) {
 			this.settings = data;
+			this.isReady = true;
 		},
 	},
 });

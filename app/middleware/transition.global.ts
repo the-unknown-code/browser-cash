@@ -5,6 +5,9 @@ import useAppStore from '~/store/useAppStore';
 export default defineNuxtRouteMiddleware(async (to, from) => {
 	const equalPath: boolean = to.fullPath === from.fullPath;
 
+	const $store = useAppStore();
+	await until(() => $store.isReady).toBe(true);
+
 	await new Promise<void>(resolve => {
 		if (import.meta.client) {
 			gsap.to('#page-transition', {

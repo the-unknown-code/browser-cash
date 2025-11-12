@@ -1,6 +1,7 @@
 <template>
-	<div class="ui-logo-card">
-		<common-svg-mask :svg="block.media" />
+	<div :class="['ui-logo-card', { full: block.full }]">
+		<common-svg-mask v-if="!block.full" :svg="block.media.src" />
+		<nuxt-img v-else :src="block.media.src" :alt="block.media.alt" />
 	</div>
 </template>
 
@@ -26,6 +27,18 @@ defineProps({
 	align-items: center;
 	justify-content: center;
 	user-select: none;
+
+	&.full {
+		background-color: var(--teal);
+
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			padding: var(--spacer-16);
+		}
+	}
 
 	@include desktop {
 		padding: var(--spacer-24);

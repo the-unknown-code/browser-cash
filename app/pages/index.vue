@@ -1,6 +1,6 @@
 <template>
 	<storyblok-wrapper url="home">
-		<template #default="{ refreshKey }">
+		<template #default="{ story, refreshKey }">
 			<main :key="refreshKey" class="page-index layout-block">
 				<client-only>
 					<animation-home />
@@ -11,7 +11,7 @@
 				<home-tasks />
 				<home-airdrop />
 				<home-reward />
-				<home-companies />
+				<lazy-layout-companies :block="parseCompanies(story)" />
 				<layout-faq />
 				<home-pre-footer />
 			</main>
@@ -19,6 +19,8 @@
 	</storyblok-wrapper>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { parseCompanies } from '~/libs/storyblok/parser';
+</script>
 
 <style lang="scss" scoped></style>

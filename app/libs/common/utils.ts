@@ -51,7 +51,7 @@ export const generateHead = (
 			{
 				hid: 'twitter:image',
 				name: 'twitter:image',
-				content: title,
+				content: image,
 			},
 			{
 				hid: 'twitter:card',

@@ -6,9 +6,9 @@
 		</p>
 		<div class="ui-text-block__actions">
 			<ui-cta
-				v-for="cta in block.cta"
+				v-for="cta in block.buttons"
 				:key="cta.label"
-				:href="cta.href"
+				:href="resolveLink(cta.url.url)"
 				:label="cta.label"
 				:type="cta.type"
 			/>
@@ -18,6 +18,8 @@
 </template>
 
 <script setup lang="ts">
+import { resolveLink } from '~/libs/storyblok/utils';
+
 const props = defineProps({
 	block: {
 		type: Object,

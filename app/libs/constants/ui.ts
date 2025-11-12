@@ -12,6 +12,7 @@ export const THEMES = {
 export const STORYBLOK_COMPONENTS = {
 	ARTICLE: 'article',
 	ARTICLE_LIST: 'article-list',
+	COMPANIES: 'companies',
 } as const;
 
 export const ARTICLE_CONTENT_TYPES = {

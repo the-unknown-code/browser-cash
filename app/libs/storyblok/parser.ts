@@ -1,4 +1,4 @@
-import { ARTICLE_CONTENT_TYPES } from '../constants/ui';
+import { ARTICLE_CONTENT_TYPES, STORYBLOK_COMPONENTS } from '../constants/ui';
 import { resolveLink, useRichText, useUnwrapBlok } from './utils';
 
 /* getImage
@@ -9,7 +9,7 @@ import { resolveLink, useRichText, useUnwrapBlok } from './utils';
 const getImage = (block: any): { src: string; alt: string } => {
 	return {
 		src: block.filename,
-		alt: block.meta_data.alt,
+		alt: block.meta_data.alt || block.filename,
 	};
 };
 
@@ -25,6 +25,26 @@ const sP = (html: string): string => {
 		return trimmed.slice(3, -4).trim();
 	}
 	return trimmed;
+};
+
+export const parseCompanies = (story: any) => {
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.COMPANIES
+	);
+
+	const data: any = {
+		heading: block.heading[0],
+		cards: [],
+	};
+
+	block.cards.forEach((card: any) => {
+		data.cards.push({
+			media: getImage(card.logo),
+			full: card.full,
+		});
+	});
+
+	return data;
 };
 
 export const parseBlog = (block: any, slug?: string) => {

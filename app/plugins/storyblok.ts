@@ -11,7 +11,6 @@ export default defineNuxtPlugin(async () => {
 			app.storyblok.settings
 		);
 
-		console.log(settings);
 		useAppStore().saveSettings(settings);
 	}
 });
