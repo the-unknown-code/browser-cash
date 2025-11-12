@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { useAsyncStory } from '~/libs/storyblok';
+import { useAsyncStory, useStoryblokHead } from '~/libs/storyblok';
 import type { ISbStoryData } from '@storyblok/js';
 
 const props = defineProps<{
@@ -20,7 +20,12 @@ const props = defineProps<{
 	apiOptions?: any;
 }>();
 
+const $route = useRoute();
 const { story, refreshKey } = await useAsyncStory(props.url, props.apiOptions);
+
+if ($route.name !== 'blog-slug') {
+	useStoryblokHead(story.value);
+}
 
 const handleStoryUpdate = ({
 	story: updatedStory,

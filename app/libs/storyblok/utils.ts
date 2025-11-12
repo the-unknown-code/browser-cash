@@ -14,7 +14,7 @@ export const useStoryblokHead = (story: any = {}) => {
 
 	const seoTitle = pageSEO.title || settingsSEO.title || '';
 	const seoDescription = pageSEO.description || settingsSEO.description || '';
-	const seoImage = pageSEO.image || settingsSEO.image || '';
+	const seoImage = pageSEO.image.filename || settingsSEO.image.filename || '';
 
 	useHead(generateHead(seoTitle, seoDescription, seoImage));
 };

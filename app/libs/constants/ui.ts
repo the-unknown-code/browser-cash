@@ -8,3 +8,15 @@ export const THEMES = {
 	DARK: 'theme-dark',
 	LIGHT: 'theme-light',
 } as const;
+
+export const STORYBLOK_COMPONENTS = {
+	ARTICLE: 'article',
+	ARTICLE_LIST: 'article-list',
+} as const;
+
+export const ARTICLE_CONTENT_TYPES = {
+	TITLE: 'article-title',
+	PARAGRAPH: 'article-paragraph',
+	MEDIA: 'article-media',
+	LINK: 'article-button-link',
+} as const;

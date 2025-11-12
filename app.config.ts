@@ -98,7 +98,7 @@ export const app: AppConfig = {
 	title: 'Browser Cash',
 	ssr: false,
 	storyblok: {
-		enabled: false,
+		enabled: true,
 		forceDraft: process.env.STORYBLOK_FORCE_DRAFT === 'true',
 		settings: 'global', // true if global settings must be loaded before the app is mounted
 		apiOptions: {

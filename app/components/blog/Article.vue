@@ -2,63 +2,53 @@
 	<article ref="$article" class="blog-article layout-grid">
 		<div>
 			<div class="blog-article__info">
-				<p class="caption">{{ ARTICLE.category }}</p>
-				<p class="caption">{{ ARTICLE.time }}</p>
+				<p class="caption">{{ block.category }}</p>
+				<p class="caption">{{ block.reading_time }} mins read</p>
 			</div>
 		</div>
 		<div class="blog-article__content">
-			<template v-for="item in ARTICLE.content" :key="item.type">
-				<h2 v-if="item.type === 'title'" class="p-big">{{ item.text }}</h2>
-				<p v-else-if="item.type === 'paragraph'" class="p-small">
+			<template v-for="item in block.content" :key="item.type">
+				<h2 v-if="item.type === ARTICLE_CONTENT_TYPES.TITLE" class="p-big">
 					{{ item.text }}
+				</h2>
+				<p
+					v-else-if="item.type === ARTICLE_CONTENT_TYPES.PARAGRAPH"
+					class="paragraph p-small"
+				>
+					<span v-html="item.text" />
 				</p>
-				<p v-else-if="item.type === 'author'" class="caption">
-					<span>Author:</span> {{ item.text }}
-				</p>
+				<nuxt-img
+					v-else-if="item.type === ARTICLE_CONTENT_TYPES.MEDIA"
+					loading="lazy"
+					format="webp"
+					:quality="80"
+					:src="item.media.src"
+					:alt="item.media.alt"
+					draggable="false"
+				/>
+				<ui-cta
+					v-if="item.type === ARTICLE_CONTENT_TYPES.LINK"
+					:label="item.label"
+					:href="item.url"
+					:type="item.isButtton ? BUTTON_TYPES.PRIMARY : BUTTON_TYPES.SECONDARY"
+				/>
 			</template>
+			<p v-if="block.author && block.author !== ''" class="caption">
+				<span>Author: {{ block.author }}</span>
+			</p>
 		</div>
 	</article>
 </template>
 
 <script setup lang="ts">
-const ARTICLE = {
-	category: 'Product Release',
-	time: '5 min read',
-	content: [
-		{
-			type: 'title',
-			text: "This guide walks through building a comprehensive market research platform that generates detailed industry reports using Parallel's Deep Research product. The application demonstrates how to create a production-ready system that handles real-time streaming, intelligent input validation and email notifications.",
-		},
-		{
-			type: 'paragraph',
-			text: 'Sed maximus, leo at auctor tempor, tortor arcu ullamcorper velit, eu faucibus lorem tortor in turpis. Nulla rutrum, lacus id tempor blandit, turpis dolor mattis elit, eu feugiat lectus velit sed metus. Cras auctor mauris eu arcu posuere, ac fermentum orci semper. Nulla iaculis eu erat in accumsan. Pellentesque ac risus et mi maximus vestibulum sit amet eget ante. Aenean nec fringilla est, ac convallis dolor. Proin sodales augue neque, eget lobortis turpis ultricies sit amet. Proin tincidunt sagittis lacus. Praesent auctor tortor in bibendum congue. Nullam eu iaculis enim. Etiam hendrerit, tellus eu sodales varius, nibh ipsum gravida purus, at lobortis nulla neque a ipsum. Donec egestas condimentum nibh, id commodo nunc tempor non. Nullam elementum ut nisl ac volutpat. Ut a nulla nec ante aliquam tempus. Donec nec mi nulla.',
-		},
-		{
-			type: 'paragraph',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis metus velit. Nulla maximus pretium leo, in sodales tortor fermentum id. Nam quam diam, hendrerit eget dignissim non, tincidunt vitae turpis. Etiam vel augue finibus, ornare orci nec, egestas metus. Nulla dignissim mi magna. Cras posuere arcu erat, a suscipit elit ultrices at. Suspendisse venenatis bibendum efficitur. Praesent eleifend accumsan maximus. Nunc accumsan nibh metus, eget aliquet felis laoreet ut. Mauris id purus eleifend, aliquam augue nec, laoreet nulla. Etiam ac finibus elit, ac ornare ante. Aliquam felis metus, consequat nec risus vel, dictum consequat augue.',
-		},
-		{
-			type: 'paragraph',
-			text: 'Sed maximus, leo at auctor tempor, tortor arcu ullamcorper velit, eu faucibus lorem tortor in turpis. Nulla rutrum, lacus id tempor blandit, turpis dolor mattis elit, eu feugiat lectus velit sed metus. Cras auctor mauris eu arcu posuere, ac fermentum orci semper. Nulla iaculis eu erat in accumsan. Pellentesque ac risus et mi maximus vestibulum sit amet eget ante. Aenean nec fringilla est, ac convallis dolor. Proin sodales augue neque, eget lobortis turpis ultricies sit amet. Proin tincidunt sagittis lacus. Praesent auctor tortor in bibendum congue. Nullam eu iaculis enim. Etiam hendrerit, tellus eu sodales varius, nibh ipsum gravida purus, at lobortis nulla neque a ipsum. Donec egestas condimentum nibh, id commodo nunc tempor non. Nullam elementum ut nisl ac volutpat. Ut a nulla nec ante aliquam tempus. Donec nec mi nulla.',
-		},
-		{
-			type: 'paragraph',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis metus velit. Nulla maximus pretium leo, in sodales tortor fermentum id. Nam quam diam, hendrerit eget dignissim non, tincidunt vitae turpis. Etiam vel augue finibus, ornare orci nec, egestas metus. Nulla dignissim mi magna. Cras posuere arcu erat, a suscipit elit ultrices at. Suspendisse venenatis bibendum efficitur. Praesent eleifend accumsan maximus. Nunc accumsan nibh metus, eget aliquet felis laoreet ut. Mauris id purus eleifend, aliquam augue nec, laoreet nulla. Etiam ac finibus elit, ac ornare ante. Aliquam felis metus, consequat nec risus vel, dictum consequat augue.',
-		},
-		{
-			type: 'paragraph',
-			text: 'Sed maximus, leo at auctor tempor, tortor arcu ullamcorper velit, eu faucibus lorem tortor in turpis. Nulla rutrum, lacus id tempor blandit, turpis dolor mattis elit, eu feugiat lectus velit sed metus. Cras auctor mauris eu arcu posuere, ac fermentum orci semper. Nulla iaculis eu erat in accumsan. Pellentesque ac risus et mi maximus vestibulum sit amet eget ante. Aenean nec fringilla est, ac convallis dolor. Proin sodales augue neque, eget lobortis turpis ultricies sit amet. Proin tincidunt sagittis lacus. Praesent auctor tortor in bibendum congue. Nullam eu iaculis enim. Etiam hendrerit, tellus eu sodales varius, nibh ipsum gravida purus, at lobortis nulla neque a ipsum. Donec egestas condimentum nibh, id commodo nunc tempor non. Nullam elementum ut nisl ac volutpat. Ut a nulla nec ante aliquam tempus. Donec nec mi nulla.',
-		},
-		{
-			type: 'paragraph',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis metus velit. Nulla maximus pretium leo, in sodales tortor fermentum id. Nam quam diam, hendrerit eget dignissim non, tincidunt vitae turpis. Etiam vel augue finibus, ornare orci nec, egestas metus. Nulla dignissim mi magna. Cras posuere arcu erat, a suscipit elit ultrices at. Suspendisse venenatis bibendum efficitur. Praesent eleifend accumsan maximus. Nunc accumsan nibh metus, eget aliquet felis laoreet ut. Mauris id purus eleifend, aliquam augue nec, laoreet nulla. Etiam ac finibus elit, ac ornare ante. Aliquam felis metus, consequat nec risus vel, dictum consequat augue.',
-		},
-		{
-			type: 'author',
-			text: 'Andrea Giuffrida',
-		},
-	],
-};
+import { ARTICLE_CONTENT_TYPES, BUTTON_TYPES } from '~/libs/constants/ui';
+
+defineProps({
+	block: {
+		type: Object as PropType<any>,
+		required: true,
+	},
+});
 
 const $article = ref<HTMLElement | null>(null);
 const scope = effectScope();
@@ -144,6 +134,26 @@ tryOnBeforeUnmount(() => {
 			&:last-child {
 				margin-bottom: 0;
 			}
+		}
+
+		p {
+			&.paragraph {
+				&:deep(strong),
+				&:deep(bold) {
+					font-weight: 600;
+				}
+
+				&:deep(u) {
+					text-decoration: underline;
+				}
+			}
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			max-inline-size: none;
+			max-block-size: none;
 		}
 	}
 }

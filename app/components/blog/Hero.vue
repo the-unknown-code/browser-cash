@@ -2,8 +2,8 @@
 	<section class="blog-hero">
 		<div class="blog-hero__media">
 			<nuxt-img
-				:src="HERO.media"
-				:alt="HERO.title"
+				:src="storyblokFormat(block.image.src, 1440)"
+				:alt="block.image.alt"
 				quality="80"
 				format="webp"
 				draggable="false"
@@ -11,37 +11,60 @@
 			/>
 			<div class="blog-hero__media__content">
 				<hgroup>
-					<h1 ref="$title" class="p-big">
-						{{ HERO.title }}
+					<h1 ref="$title" class="h3">
+						{{ block.title }}
 					</h1>
 					<div class="title-info">
 						<span
 							:ref="(el) => $info.push(el as HTMLElement)"
 							class="caption"
-							>{{ HERO.category }}</span
+							>{{ block.category }}</span
 						>
-						<span
-							:ref="(el) => $info.push(el as HTMLElement)"
-							class="caption"
-							>{{ HERO.time }}</span
-						>
+						<span :ref="(el) => $info.push(el as HTMLElement)" class="caption">
+							{{ block.reading_time }} mins read
+						</span>
 					</div>
 				</hgroup>
 			</div>
 		</div>
+		<div v-if="!article" class="blog-hero__cta">
+			<ui-cta
+				label="Read more"
+				:href="resolveLink(`/blog/${block.slug}`)"
+				:type="BUTTON_TYPES.PRIMARY"
+			/>
+		</div>
 	</section>
+	<blog-article v-if="article" :block="block" />
 </template>
 
 <script setup lang="ts">
 import gsap, { SplitText } from 'gsap/all';
+import { generateHead } from '~/libs/common/utils';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
+import { BUTTON_TYPES } from '~/libs/constants/ui';
+import { resolveLink, storyblokFormat } from '~/libs/storyblok/utils';
 
-const HERO = {
-	media: '/images/placeholder/blog-header.png',
-	title: 'Building a market research platform with Browser Cash deep research',
-	category: 'Product Release',
-	time: '5 min read',
-};
+const props = defineProps({
+	block: {
+		type: Object as PropType<any>,
+		required: true,
+	},
+	article: {
+		type: Boolean,
+		default: false,
+	},
+});
+
+if (props.article) {
+	useHead(
+		generateHead(
+			`Browser Cash - ${props.block.title}`,
+			props.block.short_description,
+			storyblokFormat(props.block.image.src, 1200, 1.9)
+		)
+	);
+}
 
 const $title = ref<HTMLElement | null>(null);
 const $info = ref<HTMLElement[]>([]);
@@ -83,12 +106,25 @@ tryOnMounted(async () => {
 <style lang="scss" scoped>
 .blog-hero {
 	position: relative;
+	width: 100%;
 	padding-top: var(--spacer-96);
+
+	&__cta {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		padding: var(--spacer-16);
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
 
 	&__media {
 		position: relative;
-		width: 100%;
-		aspect-ratio: 2/3;
+		width: 100vw;
+		left: 50%;
+		transform: translateX(-50%);
+		aspect-ratio: 3/4;
 
 		@include desktop {
 			aspect-ratio: 16/9;
@@ -100,6 +136,8 @@ tryOnMounted(async () => {
 			height: 100%;
 			object-fit: cover;
 			object-position: center;
+			max-inline-size: none;
+			max-block-size: none;
 		}
 
 		&__content {
@@ -108,7 +146,7 @@ tryOnMounted(async () => {
 			width: 50%;
 
 			@include mobile {
-				bottom: 0;
+				top: 0;
 				width: 100%;
 				max-width: 420px;
 			}
@@ -120,7 +158,7 @@ tryOnMounted(async () => {
 
 			hgroup {
 				position: relative;
-				left: calc(var(--spacer-16) * -1);
+				left: calc(var(--spacer-16) * 1);
 			}
 
 			.title-info {

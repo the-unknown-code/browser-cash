@@ -1,19 +1,23 @@
 <template>
-	<section class="blog-list">
+	<blog-hero :block="HERO" />
+
+	<section v-if="LIST.length" class="blog-list">
 		<div v-for="item in LIST" :key="item.id" class="blog-list__item">
 			<div class="blog-list__item--media">
 				<nuxt-img
-					:src="item.media"
-					:alt="item.title"
+					:src="storyblokFormat(item.image.src, 420)"
+					:alt="item.image.alt"
 					loading="lazy"
 					draggable="false"
+					quality="80"
+					format="webp"
 				/>
 			</div>
 			<p class="title p-big">{{ item.title }}</p>
-			<p class="description p-small">{{ item.description }}</p>
+			<p class="description p-small">{{ item.short_description }}</p>
 			<ui-cta
 				label="Read more"
-				href="/blog/test"
+				:href="resolveLink(`/blog/${item.slug}`)"
 				:type="BUTTON_TYPES.PRIMARY"
 			/>
 		</div>
@@ -22,14 +26,28 @@
 
 <script setup lang="ts">
 import { BUTTON_TYPES } from '~/libs/constants/ui';
+import { resolveLink, storyblokFormat } from '~/libs/storyblok/utils';
 
-defineProps({
-	items: {
-		type: Array as PropType<any[]>,
-		default: () => [],
+const props = defineProps({
+	block: {
+		type: Object as PropType<any>,
+		required: true,
 	},
 });
 
+const HERO = computed(() => {
+	const highlighted = props.block.find((item: any) => item.highlight);
+	if (highlighted) {
+		return highlighted;
+	}
+	return props.block[0];
+});
+
+const LIST = computed(() => {
+	return props.block.filter((item: any) => item !== HERO.value);
+});
+
+/*
 const LIST = [
 	{
 		id: 1,
@@ -49,6 +67,7 @@ const LIST = [
 		category: 'Product Release',
 		time: '5 min read',
 	},
+
 	{
 		id: 1,
 		media: 'https://picsum.photos/420/410',
@@ -86,6 +105,7 @@ const LIST = [
 		time: '5 min read',
 	},
 ];
+*/
 </script>
 
 <style lang="scss" scoped>
@@ -94,7 +114,7 @@ const LIST = [
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 	justify-content: flex-start;
-	gap: var(--spacer-16);
+	gap: var(--spacer-32);
 
 	&__item {
 		position: relative;

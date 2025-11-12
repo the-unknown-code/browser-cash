@@ -5,7 +5,7 @@
 	<!-- CUSTOM PAGE TRANSITION -->
 	<client-only>
 		<teleport to="body">
-			<div id="page-transition" :class="[$store.theme]" ref="$transition" />
+			<div id="page-transition" ref="$transition" :class="[$store.theme]" />
 		</teleport>
 	</client-only>
 </template>
