@@ -1,8 +1,14 @@
 <template>
 	<section ref="$section" class="layout-companies">
 		<div class="layout-grid">
-			<div>
-				<ui-text-block :block="block.heading" />
+			<div class="layout-companies__content">
+				<ui-text-block :block="block.heading">
+					<nuxt-img
+						v-if="enterprise"
+						src="/images/v-hand.svg"
+						alt="V-Hand Icon"
+					/>
+				</ui-text-block>
 			</div>
 			<div>
 				<div class="layout-companies__logos">
@@ -20,6 +26,10 @@ defineProps({
 	block: {
 		type: Object as PropType<any>,
 		required: true,
+	},
+	enterprise: {
+		type: Boolean,
+		default: false,
 	},
 });
 
@@ -78,6 +88,22 @@ tryOnBeforeUnmount(() => {
 						grid-column: 6 / span 6;
 					}
 				}
+			}
+		}
+	}
+
+	&__content {
+		position: relative;
+		img {
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			width: 70px;
+			height: auto;
+			transform: translate(10%, -110%) rotate(-15deg);
+
+			@include desktop {
+				width: 100px;
 			}
 		}
 	}
