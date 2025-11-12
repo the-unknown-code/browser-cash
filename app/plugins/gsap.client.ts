@@ -1,9 +1,9 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger, SplitText } from 'gsap/all';
 import Tempus from 'tempus';
 
 export default defineNuxtPlugin(() => {
-	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollTrigger, SplitText);
 	gsap.defaults({ ease: 'none' });
 
 	// merge rafs

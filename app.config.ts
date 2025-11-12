@@ -91,7 +91,7 @@ const grid: any = {
 };
 
 // Define global spacers
-const spacers: any = [2, 4, 8, 16, 24, 32, 48, 64, 96, 128];
+const spacers: any = [2, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128];
 
 // Application-level configuration (SSR, prefetching, etc.)
 export const app: AppConfig = {

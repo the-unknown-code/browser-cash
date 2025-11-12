@@ -1,7 +1,7 @@
 <template>
-	<main class="page-blog layout-block">
+	<main class="page-blog-article layout-block">
 		<blog-hero />
-		<blog-list />
+		<blog-article />
 	</main>
 </template>
 
