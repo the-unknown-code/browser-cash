@@ -9,6 +9,8 @@ export const useUnwrapBlok = (blokIn: any) => {
 
 export const useStoryblokHead = (story: any = {}) => {
 	const { settings } = useAppStore();
+	console.log(settings.value);
+	return;
 	const pageSEO = _get(unref(story), 'content.seo[0]');
 	const settingsSEO = settings.value?.seo?.[0] || {};
 
