@@ -16,7 +16,9 @@
 		]"
 	>
 		<nuxt-layout>
-			<nuxt-page />
+			<storyblok-wrapper url="global">
+				<nuxt-page />
+			</storyblok-wrapper>
 		</nuxt-layout>
 	</div>
 </template>

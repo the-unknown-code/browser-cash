@@ -42,6 +42,7 @@ export default defineStore('app.store', {
 		saveSettings(data: any) {
 			this.settings = data;
 			this.isReady = true;
+			console.log(this.settings);
 		},
 	},
 });

@@ -13,6 +13,9 @@ export const STORYBLOK_COMPONENTS = {
 	ARTICLE: 'article',
 	ARTICLE_LIST: 'article-list',
 	COMPANIES: 'companies',
+	FAQ: 'faq',
+	HEADER: 'header',
+	FOOTER: 'footer',
 } as const;
 
 export const ARTICLE_CONTENT_TYPES = {

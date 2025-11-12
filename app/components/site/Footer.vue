@@ -1,46 +1,36 @@
 <template>
 	<footer :class="['site-footer', $store.theme]">
 		<ul class="layout-grid">
-			<li class="nav-item">
-				<ui-nav-item href="/extension" label="Extension" simple />
-				<ui-nav-item href="/enterprise" label="Enterprise" simple />
-			</li>
-			<li class="nav-item">
-				<ui-nav-item href="/blog" label="Blog" simple />
+			<li v-for="(item, index) in NAVIGATION" :key="index" class="nav-item">
 				<ui-nav-item
-					href="http://www.google.com"
-					label="Docs"
-					simple
-					external
+					v-for="subItem in item"
+					:key="subItem._uid"
+					:href="resolveLink(subItem.link)"
+					:label="subItem.label"
+					:external="subItem.external"
+					:simple="true"
 				/>
 			</li>
-			<li class="nav-item">
-				<ui-nav-item
-					href="https://www.google.com"
-					label="Link 01"
-					simple
-					external
-				/>
-				<ui-nav-item
-					href="https://www.google.com"
-					label="Link 02"
-					simple
-					external
-				/>
-			</li>
+
 			<li class="social">
 				<div class="social-item">
-					<common-a-link href="https://www.discord.com" aria-label="Discord">
+					<common-a-link
+						:href="resolveLink(FOOTER.discord)"
+						aria-label="Discord"
+					>
 						<common-svg-mask svg="/images/discord.svg" />
 					</common-a-link>
 				</div>
 				<div class="social-item">
-					<common-a-link href="https://www.telegram.com" aria-label="Telegram">
+					<common-a-link
+						:href="resolveLink(FOOTER.telegram)"
+						aria-label="Telegram"
+					>
 						<common-svg-mask svg="/images/telegram.svg" />
 					</common-a-link>
 				</div>
 				<div class="social-item">
-					<common-a-link href="https://www.x.com" aria-label="X">
+					<common-a-link :href="resolveLink(FOOTER.x)" aria-label="X">
 						<common-svg-mask svg="/images/x.svg" />
 					</common-a-link>
 				</div>
@@ -55,9 +45,28 @@
 </template>
 
 <script setup lang="ts">
+import { STORYBLOK_COMPONENTS } from '~/libs/constants/ui';
+import { resolveLink } from '~/libs/storyblok/utils';
 import useAppStore from '~/store/useAppStore';
 
 const $store = useAppStore();
+
+const FOOTER = computed(() =>
+	$store.globalSettings.content?.body?.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.FOOTER
+	)
+);
+
+const NAVIGATION = computed(() => {
+	return FOOTER.value?.navigation?.reduce(
+		(result: any[], item: any, index: number) => {
+			if (index % 2 === 0) result.push([item]);
+			else result[result.length - 1].push(item);
+			return result;
+		},
+		[]
+	);
+});
 </script>
 
 <style lang="scss" scoped>

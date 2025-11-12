@@ -3,55 +3,21 @@
 		<div class="layout-block">
 			<ui-logo />
 			<ul v-show="isDesktop" role="navigation" class="site-header__nav">
-				<li>
+				<li v-for="item in HEADER.navigation" :key="item.id">
 					<ui-nav-item
-						:class="{ active: $route.name === 'extension' }"
-						href="/extension"
-						label="Extension"
+						:class="{ active: $route.name === item.label }"
+						:href="resolveLink(item.link)"
+						:label="item.label"
+						:external="item.external"
 					/>
-				</li>
-				<li>
-					<ui-nav-item
-						:class="{ active: $route.name === 'enterprise' }"
-						href="/enterprise"
-						label="Enterprise"
-					/>
-				</li>
-				<li>
-					<ui-nav-item
-						:class="{ active: $route.name === 'blog' }"
-						href="/blog"
-						label="Blog"
-					/>
-				</li>
-				<li>
-					<ui-nav-item href="https://www.google.com" label="Docs" external />
 				</li>
 
-				<!--
-				<li>
-					<ui-nav-item href="/contact-us" label="Contact Us" />
-				</li>
-				-->
-
-				<li>
+				<li v-for="item in HEADER.buttons" :key="item.id">
 					<ui-cta
-						href="https://www.google.com"
-						label="Login"
-						:type="
-							$route.name === 'enterprise'
-								? BUTTON_TYPES.INVERTED
-								: BUTTON_TYPES.PRIMARY
-						"
-						external
-					/>
-				</li>
-				<li>
-					<ui-cta
-						href="https://www.google.com"
-						label="Sign Up"
-						:type="BUTTON_TYPES.SECONDARY"
-						external
+						:href="resolveLink(item.url)"
+						:label="item.label"
+						:type="item.type"
+						:external="item.external"
 					/>
 				</li>
 			</ul>
@@ -60,8 +26,18 @@
 </template>
 
 <script setup lang="ts">
-import { BUTTON_TYPES } from '~/libs/constants/ui';
+import { STORYBLOK_COMPONENTS } from '~/libs/constants/ui';
+import { resolveLink } from '~/libs/storyblok/utils';
+import useAppStore from '~/store/useAppStore';
 const { isDesktop } = useBreakpoints();
+
+const $store = useAppStore();
+
+const HEADER = computed(() =>
+	$store.globalSettings.content?.body?.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.HEADER
+	)
+);
 </script>
 
 <style lang="scss" scoped>

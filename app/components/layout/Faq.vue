@@ -2,11 +2,11 @@
 	<section :class="['layout-faq', theme]">
 		<div class="layout-grid">
 			<div class="layout-faq__content">
-				<ui-text-block :block="block" />
+				<ui-text-block :block="block.heading" />
 			</div>
 			<div class="layout-faq__items">
 				<ui-faq-item
-					v-for="(item, index) in faqBlock"
+					v-for="(item, index) in block.faq"
 					:key="index"
 					:block="item"
 					:index="index"
@@ -17,63 +17,19 @@
 </template>
 
 <script setup lang="ts">
-import { BUTTON_TYPES, THEMES } from '~/libs/constants/ui';
+import { THEMES } from '~/libs/constants/ui';
 
-const props = defineProps({
+defineProps({
 	theme: {
 		type: String,
 		required: false,
 		default: THEMES.LIGHT,
 	},
+	block: {
+		type: Object as PropType<any>,
+		required: true,
+	},
 });
-
-const block = {
-	title: 'Your questions, answered.',
-	description: null,
-	cta: [
-		{
-			label: 'SCALE YOUR AI VISION',
-			href: '/extension',
-			type:
-				props.theme === THEMES.DARK
-					? BUTTON_TYPES.INVERTED
-					: BUTTON_TYPES.PRIMARY,
-		},
-	],
-};
-
-const faqBlock = [
-	{
-		question: 'What is Browser Cash?',
-		answer:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-	},
-	{
-		question: 'How does Browser Cash work?',
-		answer:
-			'Browser Cash is a browser extension that allows you to earn cash by performing tasks in your browser.',
-	},
-	{
-		question: 'How do I cash in on Browser Cash?',
-		answer:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-	},
-	{
-		question: 'What is Browser Cash?',
-		answer:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-	},
-	{
-		question: 'How does Browser Cash work?',
-		answer:
-			'Browser Cash is a browser extension that allows you to earn cash by performing tasks in your browser.',
-	},
-	{
-		question: 'How do I cash in on Browser Cash?',
-		answer:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-	},
-];
 </script>
 
 <style lang="scss" scoped>

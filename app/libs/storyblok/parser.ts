@@ -47,6 +47,26 @@ export const parseCompanies = (story: any) => {
 	return data;
 };
 
+export const parseFaq = (story: any) => {
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.FAQ
+	);
+
+	const data: any = {
+		heading: block.heading[0],
+		faq: [],
+	};
+
+	block.list.forEach((card: any) => {
+		data.faq.push({
+			question: card.question,
+			answer: card.answer,
+		});
+	});
+
+	return data;
+};
+
 export const parseBlog = (block: any, slug?: string) => {
 	const data: {
 		slug: string;

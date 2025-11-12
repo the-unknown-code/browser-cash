@@ -12,7 +12,7 @@
 				<home-airdrop />
 				<home-reward />
 				<lazy-layout-companies :block="parseCompanies(story)" />
-				<layout-faq />
+				<lazy-layout-faq :block="parseFaq(story)" />
 				<home-pre-footer />
 			</main>
 		</template>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { parseCompanies } from '~/libs/storyblok/parser';
+import { parseCompanies, parseFaq } from '~/libs/storyblok/parser';
 </script>
 
 <style lang="scss" scoped></style>

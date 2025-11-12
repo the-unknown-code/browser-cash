@@ -8,7 +8,7 @@
 				<enterprise-accuracy />
 				<enterprise-pricing />
 				<enterprise-ready />
-				<layout-faq :theme="THEMES.DARK" />
+				<layout-faq :theme="THEMES.DARK" :block="parseFaq(story)" />
 				<enterprise-form />
 			</main>
 		</template>
@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { THEMES } from '~/libs/constants/ui';
-import { parseCompanies } from '~/libs/storyblok/parser';
+import { parseCompanies, parseFaq } from '~/libs/storyblok/parser';
 </script>
 
 <style lang="scss" scoped></style>
