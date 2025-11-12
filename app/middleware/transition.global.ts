@@ -8,6 +8,10 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 	const $store = useAppStore();
 	await until(() => $store.isReady).toBe(true);
 
+	if (!to.name) {
+		return navigateTo('/404');
+	}
+
 	await new Promise<void>(resolve => {
 		if (import.meta.client) {
 			gsap.to('#page-transition', {

@@ -29,7 +29,7 @@
 					<p class="h3">Scale AI<br />automation</p>
 					<ui-cta
 						:type="BUTTON_TYPES.INVERTED"
-						href="/enterpise"
+						href="/enterprise"
 						label="Explore enterprise"
 					/>
 				</div>

@@ -69,6 +69,7 @@ tryOnBeforeUnmount(() => {
 .blog-article {
 	$desktop-width: 1024px;
 
+	max-width: 1440px;
 	padding: var(--spacer-64) 0;
 
 	> div {
@@ -92,6 +93,7 @@ tryOnBeforeUnmount(() => {
 		flex-direction: column;
 		gap: var(--spacer-8);
 		margin-bottom: var(--spacer-32);
+		padding-right: var(--spacer-8);
 
 		@media screen and (min-width: $desktop-width) {
 			position: sticky;

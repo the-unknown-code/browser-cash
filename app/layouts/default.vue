@@ -7,7 +7,7 @@
 				<slot />
 			</page-transition>
 
-			<site-footer />
+			<site-footer v-if="$route.name !== '404'" />
 
 			<client-only>
 				<ui-frame />

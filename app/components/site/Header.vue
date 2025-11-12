@@ -1,8 +1,8 @@
 <template>
-	<header class="site-header">
-		<div class="layout-block">
+	<header :class="['site-header', { 'is-404': $route.name === '404' }]">
+		<nav class="layout-block">
 			<ui-logo />
-			<ul v-show="isDesktop" role="navigation" class="site-header__nav">
+			<ul v-show="isDesktop" class="site-header__nav">
 				<li v-for="item in HEADER.navigation" :key="item.id">
 					<ui-nav-item
 						:class="{ active: $route.name === item.label }"
@@ -21,7 +21,7 @@
 					/>
 				</li>
 			</ul>
-		</div>
+		</nav>
 	</header>
 </template>
 
@@ -51,27 +51,29 @@ const HEADER = computed(() =>
 
 	// mix-blend-mode: difference;
 
-	&:before {
-		content: '';
-		@include fill(absolute);
-		width: calc(100% - var(--spacer-16) * 2 - 2px);
-		top: calc(var(--spacer-16) + 1px);
-		left: calc(var(--spacer-16) + 1px);
-		height: 100%;
-		background: linear-gradient(
-			to bottom,
-			var(--white-80) 40%,
-			transparent 90%
-		);
-	}
-
-	&:where(.theme-dark *) {
+	&:not(.is-404) {
 		&:before {
+			content: '';
+			@include fill(absolute);
+			width: calc(100% - var(--spacer-16) * 2 - 2px);
+			top: calc(var(--spacer-16) + 1px);
+			left: calc(var(--spacer-16) + 1px);
+			height: 100%;
 			background: linear-gradient(
 				to bottom,
-				var(--off-white-80) 40%,
+				var(--white-80) 40%,
 				transparent 90%
 			);
+		}
+
+		&:where(.theme-dark *) {
+			&:before {
+				background: linear-gradient(
+					to bottom,
+					var(--off-white-80) 40%,
+					transparent 90%
+				);
+			}
 		}
 	}
 

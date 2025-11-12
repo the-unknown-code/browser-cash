@@ -69,6 +69,11 @@ export default defineNuxtConfig({
 		},
 	},
 
+	site: {
+		url: 'https://www.browser.cash/',
+		name: 'Browser Cash',
+	},
+
 	runtimeConfig: {
 		public: {
 			breakpoints: config.breakpoints,

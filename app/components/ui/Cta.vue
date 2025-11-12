@@ -74,7 +74,7 @@ const onClickHandler = (e: MouseEvent | PointerEvent) => {
 	width: max-content;
 	user-select: none;
 
-	border: 1px solid var(--black);
+	border: 1.5px solid var(--black);
 	border-radius: var(--spacer-4);
 	overflow: hidden;
 

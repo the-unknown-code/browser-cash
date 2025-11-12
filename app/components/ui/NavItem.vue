@@ -40,7 +40,6 @@ defineProps({
 .ui-nav-item {
 	width: max-content;
 	user-select: none;
-	padding: var(--spacer-4) var(--spacer-8);
 
 	&:deep(.a-div) {
 		position: relative;
@@ -69,6 +68,7 @@ defineProps({
 			display: flex;
 			gap: var(--spacer-4);
 			align-items: center;
+			padding: var(--spacer-4) var(--spacer-8);
 			transition: transform var(--duration-medium) var(--ease-in-out-circ);
 
 			&:nth-child(2) {
