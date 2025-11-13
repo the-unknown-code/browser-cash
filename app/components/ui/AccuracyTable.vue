@@ -4,7 +4,7 @@
 			<div class="ui-accuracy-table__list">
 				<ul>
 					<li
-						v-for="item in LIST"
+						v-for="item in block"
 						:key="item.id"
 						:class="['caption', { active: activeIndex === item.id }]"
 						@click="activeIndex = item.id"
@@ -14,7 +14,15 @@
 				</ul>
 			</div>
 			<div class="ui-accuracy-table__grid">
-				<utils-grid :size="10" />
+				<utils-grid :size="10">
+					<div class="ui-accuracy-table__grid__points">
+						<ui-benchmark-point
+							v-for="(point, index) in activeBenchmark.points"
+							:key="index"
+							:point="point"
+						/>
+					</div>
+				</utils-grid>
 			</div>
 		</div>
 		<div>
@@ -61,30 +69,17 @@
 </template>
 
 <script setup lang="ts">
-const LIST = [
-	{
-		id: 1,
-		title: 'BrowseComp',
+const props = defineProps({
+	block: {
+		type: Object,
+		required: true,
 	},
-	{
-		id: 2,
-		title: 'Deep Research Bench',
-	},
-	{
-		id: 3,
-		title: 'WISER-Search',
-	},
-	{
-		id: 4,
-		title: 'WISER-Atomic',
-	},
-	{
-		id: 5,
-		title: 'SimpleQA',
-	},
-];
+});
 
-const activeIndex = ref(1);
+const activeIndex = ref(props.block[0].id);
+const activeBenchmark = computed(() =>
+	props.block.find((item: any) => item.id === activeIndex.value)
+);
 </script>
 
 <style lang="scss" scoped>
@@ -218,6 +213,10 @@ const activeIndex = ref(1);
 		position: relative;
 		width: 100%;
 		aspect-ratio: 1;
+
+		&__points {
+			@include fill(absolute);
+		}
 	}
 }
 </style>

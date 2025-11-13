@@ -10,6 +10,7 @@
 				src="/images/indicator-accuracy.svg"
 				class="utils-grid--indicator-accuracy"
 			/>
+			<slot />
 		</div>
 		<div class="utils-grid__legend mono">
 			<p class="mono-tiny">Browsercash</p>

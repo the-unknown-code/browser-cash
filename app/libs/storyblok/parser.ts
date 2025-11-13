@@ -135,10 +135,14 @@ export const parseFaq = (story: any) => {
  * @returns The benchmark data
  */
 export const parseBenchmark = (story: any) => {
-	const data: any = [];
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.BENCHMARK
 	);
+
+	const data: any = {
+		heading: block.heading[0],
+		benchmarks: [],
+	};
 
 	block.blocks.forEach((benchmark: any) => {
 		const benchmarkItem: any = {
@@ -152,12 +156,14 @@ export const parseBenchmark = (story: any) => {
 				position: { x: parseFloat(point.x), y: parseFloat(point.y) },
 				label: point.label,
 				subtitle: point.subtitle,
+				browsercash: point.browsercash,
 			});
 		});
 
-		data.push(benchmarkItem);
+		data.benchmarks.push(benchmarkItem);
 	});
 
+	console.log(data);
 	return data;
 };
 

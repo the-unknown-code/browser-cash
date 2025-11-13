@@ -2,21 +2,22 @@
 	<section class="enterprise-accuracy">
 		<div class="layout-grid">
 			<div>
-				<ui-text-block :block="block" />
+				<ui-text-block :block="block.heading" />
 			</div>
 			<div>
-				<ui-accuracy-table />
+				<ui-accuracy-table :block="block.benchmarks" />
 			</div>
 		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
-const block = {
-	title: 'Highest accuracy over time',
-	description: 'State of the art across several benchmarks',
-	cta: [],
-};
+defineProps({
+	block: {
+		type: Object,
+		required: true,
+	},
+});
 </script>
 
 <style lang="scss" scoped>
