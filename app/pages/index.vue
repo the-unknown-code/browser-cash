@@ -14,7 +14,10 @@
 				<lazy-layout-companies :block="parseCompanies(story)" />
 				<lazy-layout-faq :block="parseFaq(story)" />
 
-				<layout-pre-footer :type="parsePreFooter(story).type" />
+				<layout-pre-footer
+					v-if="parsePreFooter(story)"
+					:type="parsePreFooter(story).type"
+				/>
 
 				<!--
 				<home-pre-footer
