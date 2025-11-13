@@ -140,6 +140,8 @@ export const parseBenchmark = (story: any) => {
 	);
 
 	const data: any = {
+		intro: block.intro,
+		description: sP(useUnwrapBlok(useRichText(block.description))),
 		heading: block.heading[0],
 		benchmarks: [],
 	};

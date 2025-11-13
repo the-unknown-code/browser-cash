@@ -5,7 +5,7 @@
 				<ui-text-block :block="block.heading" />
 			</div>
 			<div>
-				<ui-accuracy-table :block="block.benchmarks" />
+				<ui-accuracy-table :block="block" />
 			</div>
 		</div>
 	</section>

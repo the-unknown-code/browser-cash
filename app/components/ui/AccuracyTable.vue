@@ -4,7 +4,7 @@
 			<div class="ui-accuracy-table__list">
 				<ul>
 					<li
-						v-for="item in block"
+						v-for="item in block.benchmarks"
 						:key="item.id"
 						:class="['caption', { active: activeIndex === item.id }]"
 						@click="activeIndex = item.id"
@@ -27,42 +27,10 @@
 		</div>
 		<div>
 			<span class="title mono-tiny">
-				This benchmark, created by OpenAI, contains 1,266 questions requiring
-				multi-hop reasoning, creative search formulation, and synthesis of
-				contextual clues across time periods. Results are reported on a random
-				sample of 100 questions from this benchmark.
+				{{ block.intro }}
 			</span>
 			<div>
-				<p class="mono-tiny">
-					<span class="aqua">Dates</span>
-					<span>
-						All measurements were made between 08/11/2025 and 08/29/2025.
-					</span>
-				</p>
-				<p class="mono-tiny">
-					<span class="aqua">CONFIGURATIONS</span>
-					<span>
-						For all competitors, we report the highest numbers we were able to
-						achieve across multiple configurations of their APIs. The exact
-						configurations are below.
-					</span>
-				</p>
-				<p class="mono-tiny">
-					<span class="aqua">GPT-5</span>
-					<span> High reasoning, high search context, default verbosity </span>
-				</p>
-				<p class="mono-tiny">
-					<span class="aqua">EXA</span>
-					<span>Exa Research Pro</span>
-				</p>
-				<p class="mono-tiny">
-					<span class="aqua">ANTHROPIC</span>
-					<span>Claude Opus 4.1</span>
-				</p>
-				<p class="mono-tiny">
-					<span class="aqua">PERPLEXITY</span>
-					<span>Sonar Deep Research reasoning effort high</span>
-				</p>
+				<div class="description mono-tiny" v-html="block.description" />
 			</div>
 		</div>
 	</div>
@@ -76,9 +44,9 @@ const props = defineProps({
 	},
 });
 
-const activeIndex = ref(props.block[0].id);
+const activeIndex = ref(props.block.benchmarks[0].id);
 const activeBenchmark = computed(() =>
-	props.block.find((item: any) => item.id === activeIndex.value)
+	props.block.benchmarks.find((item: any) => item.id === activeIndex.value)
 );
 </script>
 
@@ -108,6 +76,14 @@ const activeBenchmark = computed(() =>
 	@media screen and (min-width: $desktop-width) {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
+	}
+
+	.description {
+		&::v-deep(strong),
+		&::v-deep(b) {
+			font-weight: 600;
+			color: var(--aqua) !important;
+		}
 	}
 
 	> div {
