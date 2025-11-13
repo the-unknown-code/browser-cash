@@ -27,6 +27,11 @@ const sP = (html: string): string => {
 	return trimmed;
 };
 
+/* parseCompanies
+ * Parse the companies block
+ * @param story - The story to parse
+ * @returns The companies data
+ */
 export const parseCompanies = (story: any) => {
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.COMPANIES
@@ -47,6 +52,11 @@ export const parseCompanies = (story: any) => {
 	return data;
 };
 
+/* parsePreFooter
+ * Parse the pre footer block
+ * @param story - The story to parse
+ * @returns The pre footer data
+ */
 export const parsePreFooter = (story: any) => {
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.PRE_FOOTER
@@ -55,6 +65,11 @@ export const parsePreFooter = (story: any) => {
 	return block;
 };
 
+/* parseAirdrop
+ * Parse the airdrop block
+ * @param story - The story to parse
+ * @returns The airdrop data
+ */
 export const parseAirdrop = (story: any) => {
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.AIRDROP
@@ -63,6 +78,11 @@ export const parseAirdrop = (story: any) => {
 	return block;
 };
 
+/* parseRewarding
+ * Parse the rewarding block
+ * @param story - The story to parse
+ * @returns The rewarding data
+ */
 export const parseRewarding = (story: any) => {
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.REWARDING
@@ -71,6 +91,11 @@ export const parseRewarding = (story: any) => {
 	return block;
 };
 
+/* parseReady
+ * Parse the ready block
+ * @param story - The story to parse
+ * @returns The ready data
+ */
 export const parseReady = (story: any) => {
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.READY
@@ -79,6 +104,11 @@ export const parseReady = (story: any) => {
 	return block;
 };
 
+/* parseFaq
+ * Parse the faq block
+ * @param story - The story to parse
+ * @returns The faq data
+ */
 export const parseFaq = (story: any) => {
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.FAQ
@@ -94,6 +124,38 @@ export const parseFaq = (story: any) => {
 			question: card.question,
 			answer: card.answer,
 		});
+	});
+
+	return data;
+};
+
+/* parseBenchmark
+ * Parse the benchmark block
+ * @param story - The story to parse
+ * @returns The benchmark data
+ */
+export const parseBenchmark = (story: any) => {
+	const data: any = [];
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.BENCHMARK
+	);
+
+	block.blocks.forEach((benchmark: any) => {
+		const benchmarkItem: any = {
+			id: benchmark.id,
+			title: benchmark.name,
+			points: [],
+		};
+
+		benchmark.list.forEach((point: any) => {
+			benchmarkItem.points.push({
+				position: { x: parseFloat(point.x), y: parseFloat(point.y) },
+				label: point.label,
+				subtitle: point.subtitle,
+			});
+		});
+
+		data.push(benchmarkItem);
 	});
 
 	return data;

@@ -21,6 +21,7 @@ export const STORYBLOK_COMPONENTS = {
 	AIRDROP: 'airdrop-list',
 	REWARDING: 'rewarding-list',
 	READY: 'ready-list',
+	BENCHMARK: 'benchmark',
 } as const;
 
 export const ARTICLE_CONTENT_TYPES = {
