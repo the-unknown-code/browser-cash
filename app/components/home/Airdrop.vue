@@ -32,58 +32,64 @@
 </template>
 
 <script setup lang="ts">
+import { parseAirdrop } from '~/libs/storyblok/parser';
+import useAppStore from '~/store/useAppStore';
+
+const $store = useAppStore();
+const AIRDROP = parseAirdrop($store.globalSettings);
+
 const CARDS = [
 	{
-		description: 'Earn points for token airdrop and community rewards',
+		description: AIRDROP.description_01,
 		rive: '/rive/card_flowers.riv',
 	},
 	{
-		description: 'Power real AI agents, not data collection',
+		description: AIRDROP.description_02,
 		rive: '/rive/card_brain.riv',
 	},
 	{
-		description: 'Complete privacy protection. Your data system stays yours',
+		description: AIRDROP.description_03,
 		rive: '/rive/card_lock.riv',
 	},
 	{
-		description: 'Zero impact browsing performance guaranteed',
+		description: AIRDROP.description_04,
 		rive: '/rive/card_timer.riv',
 		right: true,
 	},
 	{
-		description: 'Join global automation network. Be part of the AI workforce',
+		description: AIRDROP.description_05,
 		rive: '/rive/card_smiley.riv',
 		right: true,
 	},
 	{
-		description: 'Complete privacy protection. Your data system stays yours',
+		description: AIRDROP.description_06,
 		rive: '/rive/card_crown.riv',
 		right: true,
 	},
 	{
-		description: 'Earn points for token airdrop and community rewards',
+		description: AIRDROP.description_01,
 		rive: '/rive/card_flowers.riv',
 	},
 	{
-		description: 'Power real AI agents, not data collection',
+		description: AIRDROP.description_02,
 		rive: '/rive/card_brain.riv',
 	},
 	{
-		description: 'Complete privacy protection. Your data system stays yours',
+		description: AIRDROP.description_03,
 		rive: '/rive/card_lock.riv',
 	},
 	{
-		description: 'Zero impact browsing performance guaranteed',
+		description: AIRDROP.description_04,
 		rive: '/rive/card_timer.riv',
 		right: true,
 	},
 	{
-		description: 'Join global automation network. Be part of the AI workforce',
+		description: AIRDROP.description_05,
 		rive: '/rive/card_smiley.riv',
 		right: true,
 	},
 	{
-		description: 'Complete privacy protection. Your data system stays yours',
+		description: AIRDROP.description_06,
 		rive: '/rive/card_crown.riv',
 		right: true,
 	},

@@ -17,6 +17,10 @@ export const STORYBLOK_COMPONENTS = {
 	HEADER: 'header',
 	FOOTER: 'footer',
 	GLOBAL_LINKS: 'global-links',
+	PRE_FOOTER: 'pre-footer',
+	AIRDROP: 'airdrop-list',
+	REWARDING: 'rewarding-list',
+	READY: 'ready-list',
 } as const;
 
 export const ARTICLE_CONTENT_TYPES = {
@@ -24,4 +28,10 @@ export const ARTICLE_CONTENT_TYPES = {
 	PARAGRAPH: 'article-paragraph',
 	MEDIA: 'article-media',
 	LINK: 'article-button-link',
+} as const;
+
+export const FOOTER_TYPES = {
+	CLASSIS: 'footer-classic',
+	DOWNLOAD: 'footer-download',
+	FORM: 'footer-form',
 } as const;

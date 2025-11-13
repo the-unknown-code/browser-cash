@@ -23,6 +23,7 @@ const props = defineProps<{
 const $route = useRoute();
 const { story, refreshKey } = await useAsyncStory(props.url, props.apiOptions);
 
+console.log(story.value);
 if ($route.name !== 'blog-slug' && props.url !== 'global') {
 	useStoryblokHead(story.value);
 }
@@ -38,5 +39,3 @@ const handleStoryUpdate = ({
 	refreshKey.value = updatedRefreshKey;
 };
 </script>
-
-<style scoped></style>

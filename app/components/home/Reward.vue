@@ -91,25 +91,30 @@
 
 <script setup lang="ts">
 import { Alignment, Fit, Layout } from '@rive-app/canvas-lite';
+import { parseRewarding } from '~/libs/storyblok/parser';
+import useAppStore from '~/store/useAppStore';
+
+const $store = useAppStore();
+const REWARDING = parseRewarding($store.globalSettings);
 
 const ICONS = [
 	{
 		index: '1',
 		src: '/rive/browser_install.riv',
-		title: 'Install',
-		description: 'One-click extension setup',
+		title: REWARDING.list[0].title,
+		description: REWARDING.list[0].description,
 	},
 	{
 		index: '2',
 		src: '/rive/browser_perform.riv',
-		title: 'Perform',
-		description: 'Your browser performs action passively',
+		title: REWARDING.list[1].title,
+		description: REWARDING.list[1].description,
 	},
 	{
 		index: '3',
 		src: '/rive/browser_earn.riv',
-		title: 'Earn',
-		description: 'Accumulate points for rewards',
+		title: REWARDING.list[2].title,
+		description: REWARDING.list[2].description,
 	},
 ];
 

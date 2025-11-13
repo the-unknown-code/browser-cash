@@ -47,6 +47,38 @@ export const parseCompanies = (story: any) => {
 	return data;
 };
 
+export const parsePreFooter = (story: any) => {
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.PRE_FOOTER
+	);
+
+	return block;
+};
+
+export const parseAirdrop = (story: any) => {
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.AIRDROP
+	);
+
+	return block;
+};
+
+export const parseRewarding = (story: any) => {
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.REWARDING
+	);
+
+	return block;
+};
+
+export const parseReady = (story: any) => {
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.READY
+	);
+
+	return block;
+};
+
 export const parseFaq = (story: any) => {
 	const block = story.content.body.find(
 		(b: any) => b.component === STORYBLOK_COMPONENTS.FAQ

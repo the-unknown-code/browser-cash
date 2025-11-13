@@ -97,25 +97,30 @@
 <script setup lang="ts">
 import { Alignment, Fit, Layout } from '@rive-app/canvas-lite';
 import { BUTTON_TYPES } from '~/libs/constants/ui';
+import { parseReady } from '~/libs/storyblok/parser';
+import useAppStore from '~/store/useAppStore';
+
+const $store = useAppStore();
+const READY = parseReady($store.globalSettings);
 
 const ICONS = [
 	{
 		index: '1',
 		src: '/rive/enterprise/03_describe.riv',
-		title: 'DESCRIBE',
-		description: 'Tell us the actions you need done',
+		title: READY.list[0].title,
+		description: READY.list[0].description,
 	},
 	{
 		index: '2',
 		src: '/rive/enterprise/03_deploy.riv',
-		title: 'DEPLOY',
-		description: 'AI Agents learn your workflow',
+		title: READY.list[1].title,
+		description: READY.list[1].description,
 	},
 	{
 		index: '3',
 		src: '/rive/enterprise/03_scale.riv',
-		title: 'SCALE',
-		description: 'From 1 to 10.000 instantly',
+		title: READY.list[2].title,
+		description: READY.list[2].description,
 	},
 ];
 
