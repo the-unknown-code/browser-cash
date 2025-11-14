@@ -173,7 +173,6 @@ export const parseFeatures = (story: any) => {
 		(b: any) => b.component === STORYBLOK_COMPONENTS.FEATURES
 	);
 
-	console.log(block.list);
 	return block.list;
 };
 

@@ -57,7 +57,6 @@ const GLOBAL_LINKS = computed(() => {
 });
 
 const link = computed(() => {
-	console.log(GLOBAL_LINKS);
 	if (isChrome) {
 		return resolveLink(GLOBAL_LINKS.value?.chrome_link);
 	}
