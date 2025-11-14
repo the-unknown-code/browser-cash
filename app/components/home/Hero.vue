@@ -33,8 +33,8 @@
 					<span>agents.</span>
 					<ui-cta
 						:type="BUTTON_TYPES.PRIMARY"
-						href="/extension"
-						label="Download  extension"
+						:href="link"
+						label="Download extension"
 						icon="/images/arrow.svg"
 					/>
 				</animation-block>
@@ -44,7 +44,31 @@
 </template>
 
 <script setup lang="ts">
-import { BUTTON_TYPES } from '~/libs/constants/ui';
+import { BUTTON_TYPES, STORYBLOK_COMPONENTS } from '~/libs/constants/ui';
+import { resolveLink } from '~/libs/storyblok/utils';
+import useAppStore from '~/store/useAppStore';
+const { isChrome, isWindows, isLinux } = useClientEnvironment();
+
+const $store = useAppStore();
+const GLOBAL_LINKS = computed(() => {
+	return $store.globalSettings.content?.body?.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.GLOBAL_LINKS
+	);
+});
+
+const link = computed(() => {
+	console.log(GLOBAL_LINKS);
+	if (isChrome) {
+		return resolveLink(GLOBAL_LINKS.value?.chrome_link);
+	}
+	if (isWindows) {
+		return resolveLink(GLOBAL_LINKS.value?.windows_link);
+	}
+	if (isLinux) {
+		return resolveLink(GLOBAL_LINKS.value?.linux_link);
+	}
+	return resolveLink('/extension');
+});
 </script>
 
 <style lang="scss" scoped>
