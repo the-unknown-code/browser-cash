@@ -11,6 +11,12 @@
 						}),
 					}"
 				/>
+				<div v-show="isDesktop" class="enterprise-grid__rive__content">
+					<div v-for="item in GRID" :key="item.title" class="rive-grid-item">
+						<p class="mono">{{ item.title }}</p>
+						<p class="p-tiny">{{ item.description }}</p>
+					</div>
+				</div>
 			</div>
 		</client-only>
 
@@ -40,29 +46,32 @@
 import { Alignment, Fit, Layout } from '@rive-app/canvas-lite';
 const { isDesktop } = useBreakpoints();
 
+const props = defineProps({
+	block: {
+		type: Array as PropType<any[]>,
+		required: true,
+	},
+});
+
 const GRID = [
 	{
-		title: 'Automated Form Filling',
-		description:
-			'Intelligently fill out online forms using data from any source, saving you hours and cutting down on errors.',
+		title: props.block[0].title,
+		description: props.block[0].description,
 		src: '/rive/enterprise/02_auto_form.riv',
 	},
 	{
-		title: 'Autonomous Payments',
-		description:
-			'Purchase products from Amazon, Shopify, or subscribe to SaaS. Fully autonomous, no human needed.',
+		title: props.block[1].title,
+		description: props.block[1].description,
 		src: '/rive/enterprise/02_auto_payments.riv',
 	},
 	{
-		title: 'Market Research & Insights',
-		description:
-			'Access valuable market data, such as e-commerce pricing, product information, or reviews, on a large scale.',
+		title: props.block[2].title,
+		description: props.block[2].description,
 		src: '/rive/enterprise/02_market_res.riv',
 	},
 	{
-		title: 'Internet Answer Machine',
-		description:
-			'Execute AI-controlled browser agents to find answers. Analyze business reports, consolidate data into reports, take actions on live markets.',
+		title: props.block[3].title,
+		description: props.block[3].description,
 		src: '/rive/enterprise/02_internet-answer.riv',
 	},
 ];
@@ -79,6 +88,54 @@ const GRID = [
 
 	&__rive {
 		@include fill(absolute);
+
+		&__content {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+
+			.rive-grid-item {
+				position: absolute;
+				display: flex;
+				flex-direction: column;
+				gap: var(--spacer-8);
+				max-width: 230px;
+				// padding-left: var(--spacer-16);
+
+				&:nth-child(1) {
+					left: 55.2%;
+					top: 25%;
+					padding-left: var(--spacer-16);
+				}
+
+				&:nth-child(2) {
+					text-align: right;
+					right: 59.25%;
+					top: 54.75%;
+					padding-right: var(--spacer-16);
+				}
+
+				&:nth-child(3) {
+					text-align: right;
+					right: 76.8%;
+					top: 26.65%;
+					padding-right: var(--spacer-16);
+				}
+
+				&:nth-child(4) {
+					left: 73.7%;
+					top: 45.5%;
+					padding-left: var(--spacer-16);
+				}
+
+				.p-tiny {
+					line-height: 120%;
+					font-size: 13px;
+				}
+			}
+		}
 	}
 
 	&__content {

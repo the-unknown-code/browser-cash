@@ -12,7 +12,10 @@
 			</div>
 			<div>
 				<div class="layout-companies__logos">
-					<div v-for="card in block.cards" :key="card.media.src">
+					<div
+						v-for="card in block.cards"
+						:key="card.media.src + Math.random()"
+					>
 						<ui-logo-card :block="card" />
 					</div>
 				</div>
@@ -50,13 +53,21 @@ tryOnBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .layout-companies {
-	min-height: 100lvh;
+	//min-height: 100lvh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	padding: var(--spacer-64) 0;
 
 	.layout-grid {
+		//height: 100%;
+		//grid-auto-rows: 100%;
+
+		@include desktop {
+			height: 100%;
+			grid-auto-rows: 100%;
+		}
+
 		> * {
 			grid-column: -1 / 1;
 
@@ -68,8 +79,9 @@ tryOnBeforeUnmount(() => {
 					align-items: center;
 					grid-column: span 5;
 					align-self: start;
-					height: fit-content;
-					min-height: 100dvh;
+					height: 100%;
+					max-height: 100dvh;
+					// min-height: 100dvh;
 
 					@media screen and (min-width: 1280px) {
 						grid-column: span 4;
@@ -81,8 +93,13 @@ tryOnBeforeUnmount(() => {
 				margin-top: var(--spacer-64);
 
 				@include desktop {
+					display: flex;
+					align-items: center;
+					width: 100%;
+					height: 100%;
 					grid-column: 7 / span 6;
 					margin-top: 0;
+					// min-height: 100dvh;
 
 					@media screen and (min-width: 1280px) {
 						grid-column: 6 / span 6;
@@ -109,6 +126,7 @@ tryOnBeforeUnmount(() => {
 	}
 
 	&__logos {
+		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: var(--spacer-8);

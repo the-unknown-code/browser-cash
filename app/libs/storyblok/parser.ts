@@ -165,8 +165,16 @@ export const parseBenchmark = (story: any) => {
 		data.benchmarks.push(benchmarkItem);
 	});
 
-	console.log(data);
 	return data;
+};
+
+export const parseFeatures = (story: any) => {
+	const block = story.content.body.find(
+		(b: any) => b.component === STORYBLOK_COMPONENTS.FEATURES
+	);
+
+	console.log(block.list);
+	return block.list;
 };
 
 export const parseBlog = (block: any, slug?: string) => {

@@ -4,7 +4,7 @@
 			<main :key="refreshKey" class="page-enterprise layout-block">
 				<enterprise-hero />
 				<layout-companies enterprise :block="parseCompanies(story)" />
-				<enterprise-grid />
+				<enterprise-grid :block="parseFeatures(story)" />
 				<enterprise-accuracy :block="parseBenchmark(story)" />
 				<enterprise-pricing />
 				<enterprise-ready />
@@ -21,6 +21,7 @@ import {
 	parseBenchmark,
 	parseCompanies,
 	parseFaq,
+	parseFeatures,
 } from '~/libs/storyblok/parser';
 </script>
 

@@ -22,6 +22,7 @@ export const STORYBLOK_COMPONENTS = {
 	REWARDING: 'rewarding-list',
 	READY: 'ready-list',
 	BENCHMARK: 'benchmark',
+	FEATURES: 'features',
 } as const;
 
 export const ARTICLE_CONTENT_TYPES = {
