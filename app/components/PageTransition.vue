@@ -1,5 +1,5 @@
 <template>
-	<transition mode="out-in" @enter="onEnter" @before-enter="onBeforeEnter">
+	<transition mode="out-in" @enter="onEnter" @after-enter="onAfterEnter">
 		<slot />
 	</transition>
 	<!-- CUSTOM PAGE TRANSITION -->
@@ -22,7 +22,9 @@ const $store = useAppStore();
 
 // ---- TRANSITION HOOKS ----
 
-const onBeforeEnter = async () => {
+const onAfterEnter = async () => {
+	await nextTick();
+	console.log('onAfterEnter');
 	$store.enable();
 
 	if (lenis.value) {
@@ -37,6 +39,7 @@ const onEnter = async (e: Element, done: () => void) => {
 };
 
 hook('page:start', () => {
+	console.log('page:start');
 	$store.disable();
 });
 

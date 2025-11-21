@@ -3,14 +3,16 @@
 		<nav class="layout-block">
 			<ui-logo />
 			<ul v-show="isDesktop" class="site-header__nav">
-				<li v-for="item in HEADER.navigation" :key="item.id">
-					<ui-nav-item
-						:class="{ active: $route.name === item.label }"
-						:href="resolveLink(item.link)"
-						:label="item.label"
-						:external="item.external"
-					/>
-				</li>
+				<template v-for="item in HEADER.navigation">
+					<li v-if="!item.hide" :key="item.id">
+						<ui-nav-item
+							:class="{ active: item._uid === getNavigationId }"
+							:href="resolveLink(item.link)"
+							:label="item.label"
+							:external="item.external"
+						/>
+					</li>
+				</template>
 
 				<li v-for="item in HEADER.buttons" :key="item.id">
 					<ui-cta
@@ -31,6 +33,7 @@ import { resolveLink } from '~/libs/storyblok/utils';
 import useAppStore from '~/store/useAppStore';
 const { isDesktop } = useBreakpoints();
 
+const $route = useRoute();
 const $store = useAppStore();
 
 const HEADER = computed(() =>
@@ -38,6 +41,14 @@ const HEADER = computed(() =>
 		(b: any) => b.component === STORYBLOK_COMPONENTS.HEADER
 	)
 );
+
+const getNavigationId = computed(() => {
+	return (
+		HEADER.value?.navigation?.find(
+			(item: any) => item.link.story.slug === $route.name
+		)?._uid ?? null
+	);
+});
 </script>
 
 <style lang="scss" scoped>
